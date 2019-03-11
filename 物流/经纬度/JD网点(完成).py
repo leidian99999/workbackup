@@ -66,9 +66,9 @@ for url in urls:
 df_A = pd.DataFrame(listA)
 
 
-# print(df_A['siteAddress'].isnull().value_counts())
-# df_A = df_A.dropna(subset=["siteAddress"])
-# print(df_A['siteAddress'].isnull().value_counts())
+print(df_A['siteAddress'].isnull().value_counts())
+df_A = df_A.dropna(subset=["siteAddress"])
+print(df_A['siteAddress'].isnull().value_counts())
 
 
 print("df_A:" + str(df_A.shape))

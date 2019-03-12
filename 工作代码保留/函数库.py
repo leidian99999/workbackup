@@ -121,7 +121,7 @@ df = df[~df['物流签收时间'].str.contains('无签收时间')]
 data = data[data[colname].str.contains(colname) == False]
 # or
 df = df.dropna(column=colname)
-
+df = df[df["所在省 / 市 / 县"].str.contains("^//$",regex=True)]
 
 #去重：收货人电话号码，分类
 df = df.drop_duplicates(["分类","收货人电话号码"])

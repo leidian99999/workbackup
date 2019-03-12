@@ -20,9 +20,9 @@ import os
 
 outpath = "G:\\work\\logistica\\stations\\JDStations\\stations\\website\\"
 # name_UTF8 = "\\CSV\\JDstations_zhejiang.csv"
-name_ANSI = "JDstations_zhejiang_JD.xlsx"
+name_ANSI = "JDstations_sichuan_JD.xlsx"
 
-df = pd.read_excel(r"G:\\work\\logistica\\stations\\JDStations\\yuanURL\\浙江/浙江.xlsx")
+df = pd.read_excel(r"G:\\work\\logistica\\stations\\JDStations\\yuanURL\\四川/四川.xlsx")
 
 urls = []
 for a in df["url"]:
@@ -72,5 +72,5 @@ print(df_A['siteAddress'].isnull().value_counts())
 
 
 print("df_A:" + str(df_A.shape))
-df_A.to_excel(outpath + name_ANSI)
+df_A.to_excel(outpath + name_ANSI,index=False)
 

@@ -8,7 +8,7 @@ import time
 
 # 解析高德地图API网址信息
 def get_latlng_gaode(address,ak):
-    ak= ak_gaode
+    ak= ak
     url="http://restapi.amap.com/v3/geocode/geo?key=%s&address=%s"%(ak,address)
     data=requests.get(url)
     contest=data.json()
@@ -16,10 +16,11 @@ def get_latlng_gaode(address,ak):
 
 # 获取高德地图API地址信息
 def get_receiver_lnglat_gaode(address):
+    print("开始解析高德地址")
     start_time = time.time()
     re_List_gaode = []
     for b in address:
-    #     print(b)
+        print(b)
         re_Dict_gaode = {}
         try:
             temp=get_latlng_gaode(b,ak_gaode)
@@ -55,7 +56,7 @@ def get_receiver_lnglat_gaode(address):
 def get_latlng_baidu(address,ak):
     url = 'http://api.map.baidu.com/geocoder/v2/'
     output = 'json'#输出数据的格式
-    ak = ak_baidu
+    ak = ak
     add = quote(address) #由于本文地址变量为中文，为防止乱码，先用quote进行编码
     uri = url + '?' + 'address=' + add  + '&output=' + output + '&ak=' + ak
     req = urlopen(uri)
@@ -63,8 +64,9 @@ def get_latlng_baidu(address,ak):
     temp = json.loads(res)
     return temp
 
-# 获取高德地图API地址信息
+# 获取百度地图API地址信息
 def get_receiver_lnglat_baidu(address):
+    print("开始解析百度地址")
     start_time = time.time()
     re_List_baidu = []
     for b in address:
@@ -98,13 +100,13 @@ if __name__ == "__main__":
     ak_baidu = 'z3KEtliyTGvj0bFudEkz4GO0GN8eQQa5'
 
     # 导入数据
-    inputpath = "G:\\work\\basic\\alter\\"
+    inputpath = "D:\\work\\basic\\alter\\"
     inputFileName = "1812_info_alter_gai.csv"
-    data = pd.read_csv(inputpath + inputFileName)
-    df = data.sample(n=5) # 抽样
+    df = pd.read_csv(inputpath + inputFileName)
+    # df = data.sample(n=5) # 抽样
 
     # 导出数据
-    outpath = "G:\\work\\basic\\alter\\"
+    outpath = "D:\\work\\basic\\alter\\"
     name_ANSI = "1812_info_alter_lnglat1.xlsx"
     name_UTF8 = "1812_info_alter_lnglat.csv"
 
@@ -115,12 +117,25 @@ if __name__ == "__main__":
     print("&%"*50)
 
     df_re_lnglat_gaode = pd.DataFrame(get_receiver_lnglat_gaode(df["re_address_all"]))
-    df_re_lnglat_baidu = pd.DataFrame(get_receiver_lnglat_baidu(df["re_address_all"]))
+    # df_re_lnglat_baidu = pd.DataFrame(get_receiver_lnglat_baidu(df["re_address_all"]))
 
     split_gaode = pd.DataFrame((x.split(',') for x in df_re_lnglat_gaode['re_location_gaode']),
                                index=df_re_lnglat_gaode.index, columns=['re_Lng_gaode', 're_Lat_gaode'])
     df_re_lnglat_gaode = pd.merge(df_re_lnglat_gaode, split_gaode, left_index=True, right_index=True)
 
+    # 最后检查
+    # print("JD官网网点信息：" + str(df_JD_siteInfo.shape))
+    # print("$"*30)
+    # print("高德合并之前：" + str(df_JD_siteList_gaode.shape))
+    # print("$"*30)
+    # print("JD网点高德信息：" + str(df_JD_siteInfo_gaode.shape))
+    # print("*"*30)
+    # print("百度合并之前：" + str(df_JD_siteList_baidu.shape))
+    # print("*"*30)
+    # print("JD网点百度信息：" + str(df_JD_siteInfo_gaode.shape))
+    # print("$"*50)
+
+
     df1 = pd.concat([df, df_re_lnglat_gaode], axis=1) # df_re_lnglat_baidu
-    df.to_excel(outpath+name_ANSI,index=False)
+    df1.to_excel(outpath+name_ANSI,index=False)
 

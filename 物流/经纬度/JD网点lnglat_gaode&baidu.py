@@ -6,9 +6,6 @@ import os
 from urllib.request import urlopen, quote,URLError, HTTPError
 import time
 
-
-
-
 # 遍历获取JD官网网点信息
 def get_JD_siteInfo(urls):
     JD_siteList = []
@@ -133,14 +130,16 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
+    province = "四川省"
+    pinyin = "sichuan"
 
-    inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\浙江/浙江.xlsx"
-    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\stations\\zhejiangcityID.xlsx"
+    inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
+    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\stations\\" +pinyin + "cityID.xlsx"
 
     # 导入数据
     df = pd.read_excel(inputpath_urls)
     data_city = pd.read_excel(inputpath_citys)
-    province = "浙江省"
+
 
     # ak码
     ak_gaode = 'c71d9eda293d20db64955275557d92d4'
@@ -148,13 +147,13 @@ if __name__ == "__main__":
 
     # 导出数据路径
     outpath_JD = "G:\\work\\logistica\\stations\\JDStations\\stations\\website\\"
-    name_ANSI_JD = "JDstations_zhejiang_JD_test.xlsx"
+    name_ANSI_JD = "JDstations_" + pinyin + "_JD.xlsx"
 
     outpath_gaode = "G:\\work\\logistica\\stations\\JDStations\\stations\\gaode\\"
-    name_ANSI_gaode = "JDstations_zhejiang_gaode_test.xlsx"
+    name_ANSI_gaode = "JDstations_" + pinyin + "_gaode.xlsx"
 
     outpath_baidu = "G:\\work\\logistica\\stations\\JDStations\\stations\\baidu\\"
-    name_ANSI_baidu = "JDstations_zhejiang_baidu_test.xlsx"
+    name_ANSI_baidu = "JDstations_" + pinyin + "_baidu.xlsx"
 
     # 建立url池
     urls = []

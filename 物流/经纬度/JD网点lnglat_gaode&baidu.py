@@ -130,11 +130,11 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
-    province = "四川省"
-    pinyin = "sichuan"
+    province = "上海市"
+    pinyin = "shanghai"
 
     inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
-    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\stations\\" +pinyin + "cityID.xlsx"
+    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\stations\\" + pinyin + "cityID.xlsx"
 
     # 导入数据
     df = pd.read_excel(inputpath_urls)
@@ -164,6 +164,7 @@ if __name__ == "__main__":
 
     # 获取京东官网网点信息
     df_JD_siteInfo = pd.DataFrame(get_JD_siteInfo(urls))
+
     # 去除空白地址所在行
     print("去除空白地址前：")
     print(df_JD_siteInfo['JD_siteAddress'].isnull().value_counts())

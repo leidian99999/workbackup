@@ -130,11 +130,11 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
-    province = "上海市"
-    pinyin = "shanghai"
+    province = "辽宁省"
+    pinyin = "liaoning"
 
     inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
-    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\stations\\" + pinyin + "cityID.xlsx"
+    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\cityId\\" + pinyin + "CityID.xlsx"
 
     # 导入数据
     df = pd.read_excel(inputpath_urls)

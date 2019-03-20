@@ -130,8 +130,8 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
-    province = "辽宁省"
-    pinyin = "liaoning"
+    province = "内蒙古"
+    pinyin = "neimenggu"
 
     inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
     inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\cityId\\" + pinyin + "CityID.xlsx"

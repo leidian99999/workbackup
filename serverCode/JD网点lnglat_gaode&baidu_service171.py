@@ -130,11 +130,11 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
-    province = "山东省"
-    pinyin = "shandong"
+    province = "安徽省"
+    pinyin = "anhui"
 
-    inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
-    inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\cityId\\" + pinyin + "CityID.xlsx"
+    inputpath_urls = "/root/logistica/stations/JDStations/yuanURL/yuanURL_" + pinyin + ".xlsx"
+    inputpath_citys = "/root/logistica/stations/JDStations/cityId/" + pinyin + "CityID.xlsx"
 
     # 导入数据
     df = pd.read_excel(inputpath_urls)
@@ -146,13 +146,13 @@ if __name__ == "__main__":
     ak_baidu = 'z3KEtliyTGvj0bFudEkz4GO0GN8eQQa5'
 
     # 导出数据路径
-    outpath_JD = "G:\\work\\logistica\\stations\\JDStations\\stations\\website\\"
+    outpath_JD = "/root/logistica/stations/JDStations/website/"
     name_ANSI_JD = "JDstations_" + pinyin + "_JD.xlsx"
 
-    outpath_gaode = "G:\\work\\logistica\\stations\\JDStations\\stations\\gaode\\"
+    outpath_gaode = "/root/logistica/stations/JDStations/gaode/"
     name_ANSI_gaode = "JDstations_" + pinyin + "_gaode.xlsx"
 
-    outpath_baidu = "G:\\work\\logistica\\stations\\JDStations\\stations\\baidu\\"
+    outpath_baidu = "/root/logistica/stations/JDStations/baidu/"
     name_ANSI_baidu = "JDstations_" + pinyin + "_baidu.xlsx"
 
     # 建立url池

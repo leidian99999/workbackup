@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="server171">
+    <serverData>
+      <paths name="server171">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/PYcode" local="$PROJECT_DIR$/serverCode" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

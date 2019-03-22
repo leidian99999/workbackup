@@ -5,6 +5,8 @@ import json
 import os
 from urllib.request import urlopen, quote,URLError, HTTPError
 import time
+from sqlalchemy import create_engine
+import pymysql
 
 # 遍历获取JD官网网点信息
 def get_JD_siteInfo(urls):
@@ -130,8 +132,8 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
-    province = "山东省"
-    pinyin = "shandong"
+    province = "湖北省"
+    pinyin = "hubei"
 
     inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
     inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\cityId\\" + pinyin + "CityID.xlsx"
@@ -151,10 +153,10 @@ if __name__ == "__main__":
 
     outpath_gaode = "G:\\work\\logistica\\stations\\JDStations\\stations\\gaode\\"
     name_ANSI_gaode = "JDstations_" + pinyin + "_gaode.xlsx"
-
+    name_UTF8_gaode = "JDstations_" + pinyin + "_gaode.csv"
     outpath_baidu = "G:\\work\\logistica\\stations\\JDStations\\stations\\baidu\\"
     name_ANSI_baidu = "JDstations_" + pinyin + "_baidu.xlsx"
-
+    name_UTF8_baidu = "JDstations_" + pinyin + "_baidu.csv"
     # 建立url池
     urls = []
     for a in df["url"]:
@@ -219,6 +221,8 @@ if __name__ == "__main__":
     df_JD_siteInfo.to_excel(outpath_JD + name_ANSI_JD,index=False)
     df_JD_siteInfo_gaode.to_excel(outpath_gaode + name_ANSI_gaode,index=False)
     df_JD_siteInfo_baidu.to_excel(outpath_baidu + name_ANSI_baidu,index=False)
+    df_JD_siteInfo_gaode.to_csv(outpath_gaode + name_UTF8_gaode,index=False)
+    df_JD_siteInfo_baidu.to_csv(outpath_baidu + name_UTF8_baidu,index=False)
 
 
-
+    

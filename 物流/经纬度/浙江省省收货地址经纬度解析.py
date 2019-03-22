@@ -99,8 +99,8 @@ if __name__ == "__main__":
 	ak_baidu = 'z3KEtliyTGvj0bFudEkz4GO0GN8eQQa5'
 
 	# 导入数据
-	dirDate = "JAN19"
-	date = "1901"
+	dirDate = "FEB19"
+	date = "1902"
 	provinceName = "浙江(所在省).xlsx"
 	pinyin = "zhejiang"
 	inputpath = "G:\\work\\basic\\province\\" + dirDate + "\\"
@@ -109,9 +109,10 @@ if __name__ == "__main__":
 	# 导出数据路径
 	outpath_gaode = "G:\\work\\basic\\province\\GAODE\\"
 	name_ANSI_gaode = date + "Info_lnglat_" + pinyin + "_gaode.xlsx"
-
+	name_UTF8_gaode = date + "Info_lnglat_" + pinyin + "_gaode.csv"
 	outpath_baidu = "G:\\work\\basic\\province\\BAIDU\\"
 	name_ANSI_baidu = date + "Info_lnglat_" + pinyin + "_baidu.xlsx"
+	name_UTF8_baidu = date + "Info_lnglat_" + pinyin + "_baidu.csv"
 
 	# 选取有用字段
 	df = data[["所在省","所在市","收货地址","订单编号","承运商"]]
@@ -189,5 +190,5 @@ if __name__ == "__main__":
 
 
 	# 输出
-	data_gaode_all.to_excel(outpath_gaode + name_ANSI_gaode,index=False)
-	data_baidu_all.to_excel(outpath_baidu + name_ANSI_baidu,index=False)
+	data_gaode_all.to_csv(outpath_gaode + name_UTF8_gaode,index=False)
+	data_baidu_all.to_csv(outpath_baidu + name_UTF8_baidu,index=False)

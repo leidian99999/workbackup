@@ -1,11 +1,21 @@
 import pandas as pd
 import re
 
-inputpath = "G:\\work\\logistica\\info\\input\\1902info_L\\cha\\"
-inputname = "1902cha_jingdongxianxia.csv"
+'''
+JDXX:jingdongxianxia
+JDWL:jingdongwuliu
+
+'''
+
+
+date = "1812"
+carrier = "JDXX"
+
+inputpath = "G:\\work\\logistica\\info\\input\\cha\\"+date+"cha\\"
+inputname = date + "cha_jingdongxianxia.csv"
 outpath = "G:\\work\\logistica\\info\\output\\CHA\\CSV\\"
-outname1 = "201902_JDXX_LS_cha"
-outname2 = "201902_JDXX_DM_cha"
+outname1 = "20"+date+"_"+carrier+"_LS_cha"
+outname2 = "20"+date+"_"+carrier+"_DM_cha"
 
 df = pd.read_csv(inputpath + inputname,sep = None,encoding='utf8')
 

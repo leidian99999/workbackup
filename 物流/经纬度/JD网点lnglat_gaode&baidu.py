@@ -132,8 +132,8 @@ def get_JD_siteInfo_baidu(address):
 
 
 if __name__ == "__main__":
-    province = "江西省"
-    pinyin = "jiangxi"
+    province = "云南省"
+    pinyin = "yunnan"
 
     inputpath_urls = "G:\\work\\logistica\\stations\\JDStations\\yuanURL\\yuanURL_" + pinyin + ".xlsx"
     inputpath_citys = "G:\\work\\logistica\\stations\\JDStations\\cityId\\" + pinyin + "CityID.xlsx"
@@ -221,8 +221,8 @@ if __name__ == "__main__":
     df_JD_siteInfo.to_excel(outpath_JD + name_ANSI_JD,index=False)
     df_JD_siteInfo_gaode.to_excel(outpath_gaode + name_ANSI_gaode,index=False)
     df_JD_siteInfo_baidu.to_excel(outpath_baidu + name_ANSI_baidu,index=False)
-    df_JD_siteInfo_gaode.to_csv(outpath_gaode + name_UTF8_gaode,index=False)
-    df_JD_siteInfo_baidu.to_csv(outpath_baidu + name_UTF8_baidu,index=False)
+    # df_JD_siteInfo_gaode.to_csv(outpath_gaode + name_UTF8_gaode,index=False)
+    # df_JD_siteInfo_baidu.to_csv(outpath_baidu + name_UTF8_baidu,index=False)
 
 
     

@@ -6,10 +6,11 @@ from sqlalchemy.orm import sessionmaker
 
 DB_CONNECT_STRING = 'mysql+pymysql://admin:Monster3~@172.16.147.177/JD_Stations?charset=utf8'
 
-pinyin = "yunnan"
-fileName = "JDstations_" + pinyin + "_gaode.xlsx"
-tableName = "JDstations_" + pinyin + "_gaode"
-inputpath = "G:\\work\\logistica\\stations\\JDStations\\stations\\gaode\\"
+pinyin = "shan3xi"
+mapAPI = "gaode"
+fileName = "JDstations_" + pinyin + "_" + mapAPI + ".xlsx"
+tableName = "JDstations_" + pinyin + "_" + mapAPI
+inputpath = "G:\\work\\logistica\\stations\\JDStations\\stations\\" + mapAPI + "\\"
 
 engine = create_engine(DB_CONNECT_STRING, echo=True)
 DB_Session = sessionmaker(bind=engine)

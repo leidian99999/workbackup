@@ -4,12 +4,15 @@ import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DB_CONNECT_STRING = 'mysql+pymysql://admin:Monster3~@172.16.147.177/Data_info?charset=utf8'
+DB_CONNECT_STRING = 'mysql+pymysql://admin:Monster3~@172.16.147.177/Log_info?charset=utf8'
 
-pinyin = "1810"
-fileName = pinyin + "_info_alter_gai.csv"
-tableName = pinyin + "_info_alter_gai"
-inputpath = "G:\\work\\basic\\alter\\"
+date = "1812"
+carrier = "JDWL"
+charactor = "LS"
+LogAPI = "cha"
+fileName ="20" + date + "_" + carrier + "_" + charactor + "_" + LogAPI + ".csv"
+tableName = date + "_" + carrier + "_" + charactor + "_" + LogAPI
+inputpath = "G:\\work\\logistica\\info\\output\\CHA\\CSV\\"
 
 engine = create_engine(DB_CONNECT_STRING, echo=True)
 DB_Session = sessionmaker(bind=engine)

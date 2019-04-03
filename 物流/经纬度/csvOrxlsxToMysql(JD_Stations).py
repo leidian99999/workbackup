@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 DB_CONNECT_STRING = 'mysql+pymysql://admin:Monster3~@172.16.147.177/JD_Stations?charset=utf8'
 
-pinyin = "shan3xi"
+pinyin = "qinghai"
 mapAPI = "gaode"
 fileName = "JDstations_" + pinyin + "_" + mapAPI + ".xlsx"
 tableName = "JDstations_" + pinyin + "_" + mapAPI

@@ -35,10 +35,6 @@ def FenSheng(df_new,df_old,col_province,col_city,col_district,col_lng,col_lat):
 #                 print("*"*30)
                 dfold = dfold_shi[dfold_shi[col_district] == xian].reset_index(drop=True)
                 dfnew = dfnew_shi[dfnew_shi[col_district] == xian].reset_index(drop=True)
-                
-
-#                 print(dfnew[0:1])
-
                 if dfnew.empty == True:
                     print(sheng + xian + "：为空")
                     pass
@@ -61,9 +57,9 @@ def FenSheng(df_new,df_old,col_province,col_city,col_district,col_lng,col_lat):
                             else:
                                 pass
                     print(str(sheng) + str(shi) + str(xian) + "：已完成")
-            end_time = time.time()
-            print("总用时：",end_time-start_time)
-            return dfA
+    end_time = time.time()
+    print("总用时：",end_time-start_time)
+    return dfA
 
 dfA = FenSheng(df_new,df_old,"re_province_gaode","re_city_gaode","re_district_gaode","re_siteLng_gaode","re_siteLat_gaode")
 

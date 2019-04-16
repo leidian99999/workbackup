@@ -103,8 +103,8 @@ if __name__ == "__main__":
     ak_gaode = 'c71d9eda293d20db64955275557d92d4'
 
     # 导入数据
-    date = "1812"
-    fileName = date + "JDXX.xlsx"
+    date = "190415"
+    fileName = date + "infoAll.xls"
     pinyin = "JDXX"
     inputpath = "/root/lnglat_gaode/"
     data = pd.read_excel(inputpath + fileName)
@@ -118,6 +118,8 @@ if __name__ == "__main__":
     # 选取有用字段
     df = data[["所在省","所在市","收货地址","订单编号","承运商"]]
     df["address_all"]= df["所在省"] +"省"+ df["所在市"] + df["收货地址"]
+    df = df[df["物流公司编码"] == "jingdongxianxia"]
+    print("JDXX:"+ str(df.shape))
 
     # 文件分组并检查
     print("data:" + str(data.shape))

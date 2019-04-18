@@ -62,10 +62,10 @@ def all_path(dirname):
 
 if __name__=='__main__':
     # fold = ""
-    disk = "D"
+    disk = "G"
     #定义要合并的excel文件列表
-    fold_zong = disk + ":\\work\\"  #输出文件目录
-    allxls = all_path( disk + ":/work/yuan3")  #读取文件目录
+    fold_zong = disk + ":\\work\\basic\\carriers\\1901\\output\\"  #输出文件目录
+    allxls = all_path( disk + ":\\work\\basic\\carriers\\1901\\output\\gaode\\")  #读取文件目录
     #存储所有读取的结果
     datavalue=[]
     for fl in allxls: 
@@ -76,7 +76,7 @@ if __name__=='__main__':
             rvalue=getFilect(fl,shnum)
     #定义最终合并后生成的新文件
 
-        endfile =  fold_zong  + "1806_info_p3.xlsx"
+        endfile =  fold_zong  + "1901info_lnglat_gaode.xlsx"
     wb1=xlsxwriter.Workbook(endfile)
     #创建一个sheet工作对象
     print("开始合表中。。。。。")

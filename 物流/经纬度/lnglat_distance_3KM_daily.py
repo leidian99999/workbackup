@@ -2,12 +2,17 @@ import pandas as pd
 from geopy.distance import vincenty
 import time
 
-df_old = pd.read_csv("/root/lnglat_gaode/output/daily/1901info_lnglat_gaode.csv")
-df_new = pd.read_csv("/root/lnglat_gaode/output/daily/190416Info_lnglat_gaode.csv")
+date = "190416"
+
+df_old = pd.read_csv("/root/lnglat_gaode/daily/1901info_lnglat_gaode.csv")
+df_new = pd.read_csv("/root/lnglat_gaode/daily/" + date + "Info_lnglat_gaode.csv")
+standard = pd.read_excel("/root/lnglat_gaode/daily/standard_1901-03.xlsx")
+county = list(standard.iloc[:,2])
 
 df_old = df_old[df_old["所在省"].str.contains("所在省") == False]
 df_old = df_old[df_old["re_district_gaode"].str.contains("\[\]",regex=True) == False]
 df_new = df_new[df_new["re_district_gaode"].str.contains("\[\]",regex=True) == False]
+df_new = df_new[df_new["所在县"].isin(county)]
 
 def FenSheng(df_new,df_old,col_province,col_city,col_district,col_lng,col_lat):
     start_time = time.time()
@@ -76,5 +81,5 @@ print("df_new:" + str(df_new.shape))
 print("df_old:" + str(df_old.shape))
 
 
-dfB.to_excel("/root/lnglat_gaode/output/daily/output/190415_lnglat_dis3.xlsx",index=False)
-dfA.to_excel("/root/lnglat_gaode/output/daily/output/190415_lnglat_disAll.xlsx",index=False)
+dfB.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_dis3.xlsx",index=False)
+dfA.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_disAll.xlsx",index=False)

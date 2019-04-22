@@ -80,6 +80,9 @@ dfB = dfA[dfA['distance'] <= 3]
 print("df_new:" + str(df_new.shape))
 print("df_old:" + str(df_old.shape))
 
+dfC = pd.merge(dfB,df_old,how = "inner",left_on="orderID_old",right_on="订单编号")
 
-dfB.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_dis3.xlsx",index=False)
-dfA.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_disAll.xlsx",index=False)
+
+
+dfC.to_excel("/root/lnglat_gaode/daily/output/" + date + "info_lnglat_dis3.xlsx",index=False)
+# dfA.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_disAll.xlsx",index=False)

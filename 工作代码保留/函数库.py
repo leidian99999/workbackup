@@ -203,3 +203,7 @@ df3.shape
 df4 = df2.append(df3).drop_duplicates(subset=['配送省份名称','入网用户姓名'],keep=False)
 df4.shape
 
+# 选取数据类型为int和float的列
+numeric_features = [c for c in features_data if features_data[c].dtype.kind in ('i', 'f')] # 提取数值类型为整数或浮点数的变量
+
+

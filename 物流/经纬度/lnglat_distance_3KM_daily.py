@@ -2,17 +2,18 @@ import pandas as pd
 from geopy.distance import vincenty
 import time
 
-date = "190416"
+date = "190426"
 
-df_old = pd.read_csv("/root/lnglat_gaode/daily/1901info_lnglat_gaode.csv")
-df_new = pd.read_csv("/root/lnglat_gaode/daily/" + date + "Info_lnglat_gaode.csv")
-standard = pd.read_excel("/root/lnglat_gaode/daily/standard_1901-03.xlsx")
-county = list(standard.iloc[:,2])
+df_old = pd.read_csv(r"G:\work\logistica\distance\input/1901info_lnglat_gaode.csv")
+df_new = pd.read_excel(r"F:\temp\190428/" + date + ".xlsx")
+# standard = pd.read_excel("/root/lnglat_gaode/daily_distance/standard_1901-03(55%).xlsx")
+df_info = pd.read_csv(r"G:\work\basic\CSV/1901_info.csv")
+# county = list(standard.iloc[:,2])
 
 df_old = df_old[df_old["所在省"].str.contains("所在省") == False]
 df_old = df_old[df_old["re_district_gaode"].str.contains("\[\]",regex=True) == False]
 df_new = df_new[df_new["re_district_gaode"].str.contains("\[\]",regex=True) == False]
-df_new = df_new[df_new["所在县"].isin(county)]
+# df_new = df_new[df_new["所在县"].isin(county)]
 
 def FenSheng(df_new,df_old,col_province,col_city,col_district,col_lng,col_lat):
     start_time = time.time()
@@ -75,11 +76,14 @@ df_new['re_siteLng_gaode'] = df_new['re_siteLng_gaode'].map(lambda x:float(x))
 
 dfA = FenSheng(df_new,df_old,"re_province_gaode","re_city_gaode","re_district_gaode","re_siteLng_gaode","re_siteLat_gaode")
 
-dfB = dfA[dfA['distance'] <= 3]
+# dfB = dfA[dfA['distance'] <= 3]
 
 print("df_new:" + str(df_new.shape))
 print("df_old:" + str(df_old.shape))
 
+dfC = pd.merge(dfA,df_info,how = "inner",left_on="orderID_old",right_on="订单编号")
 
-dfB.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_dis3.xlsx",index=False)
-dfA.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_disAll.xlsx",index=False)
+
+
+dfC.to_excel(r"G:\work\logistica\distance\output/" + date + "info_lnglat_dis_WS.xlsx",index=False)
+# dfA.to_excel("/root/lnglat_gaode/daily/output/" + date + "_lnglat_disAll.xlsx",index=False)

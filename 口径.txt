@@ -1,0 +1,48 @@
+update dbo.[4.30]
+set 发货量=
+case 
+when 物流单号!='' then 1
+when 物流单号='' and 订单状态='交易完成' then 1
+when 物流单号='' and 物流签收时间!='' then 1
+else 0
+end
+
+
+
+update dbo.[4.30]
+set 签收量=
+case 
+when 物流签收时间!='' then 1
+when 物流签收时间='' and 订单状态='交易完成' then 1
+else 0
+end
+
+
+
+update dbo.[4.30]
+set 激活量=
+case 
+when 订单状态='交易完成' then 1
+else 0
+end
+
+
+
+
+update dbo.[4.30]
+set 激活时效=DATEDIFF(DD, 订单生成时间, 交易完成时间)
+/*激活时效*/
+
+update dbo.[4.30]
+set 签收时效=DATEDIFF(DD, 订单生成时间, 物流签收时间)
+/*签收时效*/
+
+
+
+update dbo.[4.30]
+set 配送时效=DATEDIFF(DD, 发货时间, 物流签收时间)
+/*配送时效*/
+
+update dbo.[4.30]
+set 激发时效=DATEDIFF(DD, 发货时间, 交易完成时间)
+/*激发时效*/

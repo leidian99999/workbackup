@@ -13,8 +13,8 @@ df = data[["收货地址","订单编号","所在省 / 市 / 县"]]
 split = pd.DataFrame((x.split('/') for x in df['所在省 / 市 / 县']), index=df.index, columns=['所在省','所在市','所在县'])
 df = pd.merge(df,split,left_index=True,right_index=True)
 
-df['所在省'] = df['所在省'].map(lambda x:str(x))
-df['所在市'] = df['所在市'].map(lambda x:str(x))
+df['所在省']   = df['所在省'].map(lambda x:str(x))
+df['所在市']   = df['所在市'].map(lambda x:str(x))
 df['收货地址'] = df['收货地址'].map(lambda x:str(x))
 
 df["收货人地址"] = df["所在省"] + df["所在市"] + df["收货地址"]

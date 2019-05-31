@@ -207,3 +207,16 @@ df4.shape
 numeric_features = [c for c in features_data if features_data[c].dtype.kind in ('i', 'f')] # 提取数值类型为整数或浮点数的变量
 
 
+# dataframe 删除某列中为空的行
+1.data["a"] = data["a"].fillna('999') # 先附一个值
+droplist = data[data["a"] == '999'].index.tolist() # 找出所在index
+data = data.drop(droplist)
+
+2.df1=df1[~df1['a'].isin(['999'])]
+
+3. indexs = list(df[np.isnan(df['just my luck'])].index)
+    df = df.drop(indexs)
+
+4.df = df[np.isnan(df['just my luck']) == False]
+
+5.df = df[pd.notnull(df['JD_siteName'])]

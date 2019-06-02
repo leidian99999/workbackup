@@ -109,3 +109,24 @@ def insertData3(worksheet, df,data_format):
         worksheet.write(row1, col1 + 13, QSHWJHL, data_format)
         worksheet.write(row1, col1 + 14, FHJHL, data_format)
         row1 += 1
+
+def insertData4(worksheet,df,data_format,data_format2):
+    row1 = 1
+    col1 = 0
+    for JHSX,JHSL,JHZHB in df.values:
+        worksheet.write(row1, col1 + 0, JHSX, data_format)
+        worksheet.write(row1, col1 + 1, JHSL, data_format)
+        worksheet.write(row1, col1 + 2, JHZHB, data_format2)
+        row1 += 1
+
+def insertData5(worksheet,df,date_format,data_format2):
+    row1 = 1
+    col1 = 0
+    for date,A_ZHB,B_ZHB,C_ZHB,D_ZHB,E_ZHB in df.values:
+        worksheet.write(row1, col1 + 0, date, date_format)
+        worksheet.write(row1, col1 + 1, A_ZHB, data_format2)
+        worksheet.write(row1, col1 + 2, B_ZHB, data_format2)
+        worksheet.write(row1, col1 + 3, C_ZHB, data_format2)
+        worksheet.write(row1, col1 + 4, D_ZHB, data_format2)
+        worksheet.write(row1, col1 + 5, E_ZHB, data_format2)
+        row1 += 1

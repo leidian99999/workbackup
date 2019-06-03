@@ -57,7 +57,7 @@ def yangshi371525(worksheet, title,date,date_format,header_format2,header_format
     worksheet.write('O2', "发货激活率KPI", header_format2)
     worksheet.write('O3', "KPI=B/A*100%", header_format2)
 
-def insertData1(worksheet, df,data_format):
+def insertData1(worksheet, df,data_format,data_format2):
     row1 = 1
     col1 = 0
     for xieka, sheng, kuaidi, fahuo, sanri, qiri, jihuol, jihuoqianshoul in df.values:
@@ -65,10 +65,10 @@ def insertData1(worksheet, df,data_format):
         worksheet.write(row1, col1 + 1, sheng, data_format)
         worksheet.write(row1, col1 + 2, kuaidi, data_format)
         worksheet.write(row1, col1 + 3, fahuo, data_format)
-        worksheet.write(row1, col1 + 4, sanri, data_format)
-        worksheet.write(row1, col1 + 5, qiri, data_format)
-        worksheet.write(row1, col1 + 6, jihuol, data_format)
-        worksheet.write(row1, col1 + 7, jihuoqianshoul, data_format)
+        worksheet.write(row1, col1 + 4, sanri, data_format2)
+        worksheet.write(row1, col1 + 5, qiri, data_format2)
+        worksheet.write(row1, col1 + 6, jihuol, data_format2)
+        worksheet.write(row1, col1 + 7, jihuoqianshoul, data_format2)
         row1 += 1
 
 def insertData2(worksheet, df,data_format):

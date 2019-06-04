@@ -1,12 +1,24 @@
 import pandas as pd
 import xlsxwriter
 import numpy as np
+from os import walk
 
-df1 = pd.read_excel(r"F:\temp\190529\数据准备\3&7日189.xlsx")
-df2 = pd.read_excel(r"F:\temp\190529\数据准备\3&7日前新生产线下京东下省.xlsx")
-df3 = pd.read_excel(r"F:\temp\190529\数据准备\首充.xlsx", sheet_name="Sheet1")
-df4 = pd.read_excel(r"F:\temp\190529\数据准备\首充0530.xlsx")
-df5 = pd.read_excel(r"F:\temp\190529\数据准备\业务订单明细[20190530164757].xlsx")
+date = '190604'
+
+for root,dirs,files in walk(r"F:\temp\190529\数据准备\7日",topdown=False):
+    print(files)
+num = len(files)
+df1 = pd.DataFrame()
+for i in range(num):
+    newdata = pd.read_excel(r'F:\temp\190529\数据准备\7日\%s'%files[i])
+    df1 = df1.append(newdata) # 189
+
+
+# df1 = pd.read_excel(r"F:\temp\190529\数据准备\3&7日189.xlsx")
+df2 = pd.read_excel(r"F:\temp\190529\数据准备\七日新生产"+ date + ".xlsx") # 新生产表
+df3 = pd.read_excel(r"F:\temp\190529\数据准备\首充.xlsx", sheet_name="Sheet1") # 首充历史表
+df4 = pd.read_excel(r"F:\temp\190529\数据准备\首充0530.xlsx") # 当日历史表
+df5 = pd.read_excel("F:/temp/190529/数据准备/京东" + date +".xlsx") # 京东表
 
 def fahuo(a,b,c):
     if a is not np.nan:
@@ -45,12 +57,10 @@ def five_tables(df1, df2, df3, df4, df5):
     df1 = df1[(True ^ df1['订单状态'].isin(['办理成功', '办理中', '办理失败']))]
     df1 = df1[pd.notnull(df1['所在省 / 市 / 县'])]
     df1 = df1[df1["订单编号"].str.contains('订单编号') == False]
-    split1 = pd.DataFrame(
-        (x.split(' ') for x in df1['订单生成时间']),
-        index=df1.index,
-        columns=[
-            '订单生成日期',
-            '订单生成小时'])
+    df1 = df1.drop_duplicates(subset=['订单编号'], keep='first')
+    df1 = df1[pd.notnull(df1['号码归属地'])]
+    df1 = df1[pd.notnull(df1['入网手机号'])]
+    split1 = pd.DataFrame((x.split(' ') for x in df1['订单生成时间']),index=df1.index,columns=['订单生成日期','订单生成小时'])
     df1 = pd.merge(df1, split1, left_index=True, right_index=True)
 
     df2 = df2[df2["模式分类"] == "京东模式"]
@@ -72,8 +82,7 @@ def five_tables(df1, df2, df3, df4, df5):
     df11 = pd.merge(df11, df51, left_on="订单编号", right_on="运营商单号", how="left")
     df11 = pd.merge(df11, df52, left_on="订单编号", right_on="运营商单号", how="left")
     df11['入网手机号'] = df11['入网手机号'].apply(int)
-    df11 = pd.merge(df11, df34[['订单编号', '用户名']],
-                    left_on="入网手机号", right_on="用户名", how="left")
+    df11 = pd.merge(df11, df34[['订单编号', '用户名']],left_on="入网手机号", right_on="用户名", how="left")
 
     df11['派单'] = df11["是否下省"].apply(paidan)
     df11['派卡'] = df11["物流单号_y"].apply(paidan)
@@ -83,8 +92,8 @@ def five_tables(df1, df2, df3, df4, df5):
     df11['签收量'] = df11.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis=1)
     df11['激活量'] = df11["订单状态"].apply(jihuo)
 
-    return df11
-    # df11.to_excel(r"F:\temp\190529\数据准备\test3.xlsx", index=False)
+    # return df11
+    df11.to_excel(r"F:\temp\190529\数据准备\test3.xlsx", index=False)
 
 
 five_tables(df1, df2, df3, df4, df5)

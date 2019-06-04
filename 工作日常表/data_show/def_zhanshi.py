@@ -25,9 +25,9 @@ def cleanquan(data):
 
 
 
-def yangshi371525(worksheet, title,date,date_format,header_format2,header_format3,header_format4,header_format5):
+def yangshi371525(worksheet,col1, title,date,date_format,header_format2,header_format3,header_format4,header_format5):
     worksheet.merge_range('A1:O1', date + title, date_format)
-    worksheet.merge_range('A2:A3', "省份", header_format2)
+    worksheet.merge_range('A2:A3', col1, header_format2)
     worksheet.merge_range('B2:B3', "订单总数S", header_format2)
 
     worksheet.merge_range('C2:C3', "生产发货A", header_format3)
@@ -56,6 +56,81 @@ def yangshi371525(worksheet, title,date,date_format,header_format2,header_format
 
     worksheet.write('O2', "发货激活率KPI", header_format2)
     worksheet.write('O3', "KPI=B/A*100%", header_format2)
+
+def yangshi37JD(worksheet, col1,title,date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6):
+    worksheet.merge_range('A1:R1', date + title, date_format)
+    worksheet.merge_range('A2:A3', col1, header_format2)
+    worksheet.merge_range('B2:B3', "派单总数S", header_format2)
+    worksheet.merge_range('C2:C3', col1+"派单量占比", header_format2)
+
+    worksheet.merge_range('D2:D3', "派卡A", header_format3)
+    worksheet.write('E2', "派卡率a", header_format3)
+    worksheet.write('E3', "a=A/S*100%", header_format3)
+    worksheet.write('F2', "异常筛查T", header_format3)
+    worksheet.write('F3', "T=S-A", header_format3)
+    worksheet.write('G2', "异常筛查率t", header_format3)
+    worksheet.write('G3', "t=T/S*100", header_format3)
+
+    worksheet.merge_range('H2:H3', "上门C", header_format4)
+    worksheet.write('I2', "上门率c", header_format4)
+    worksheet.write('I3', "c=C/A*100", header_format4)
+    worksheet.write('J2', "未上门R", header_format4)
+    worksheet.write('J3', "R=A-C", header_format4)
+    worksheet.write('K2', "未上门率r", header_format4)
+    worksheet.write('K3', "r=R/A*100%", header_format4)
+
+    worksheet.merge_range('L2:L3', "激活B", header_format5)
+    worksheet.merge_range('M2:M3', col1+"激活量占比", header_format5)
+    worksheet.write('N2', "激活率KPI", header_format5)
+    worksheet.write('N3', "KPI=B/A*100%", header_format5)
+
+    worksheet.merge_range('O2:O3', "面对面首充D", header_format6)
+    worksheet.merge_range('P2:P3', "面对面省份首充量占比", header_format6)
+    worksheet.write('Q2', "面对面首充率d", header_format6)
+    worksheet.write('Q3', "d=D/A*100", header_format6)
+    worksheet.merge_range('R2:R3', "全量首充D", header_format6)
+
+def yangshi37Mang(worksheet, col1,title,date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6):
+    worksheet.merge_range('A1:R1', date + title, date_format)
+    worksheet.merge_range('A2:A3', col1, header_format2)
+    worksheet.merge_range('B2:B3', "订单总数S", header_format2)
+    worksheet.merge_range('C2:C3', col1+"订单量占比", header_format2)
+
+    worksheet.merge_range('D2:D3', "生产发货A", header_format3)
+    worksheet.write('E2', "发货率a", header_format3)
+    worksheet.write('E3', "a=A/S*100%", header_format3)
+    worksheet.write('F2', "异常筛查T", header_format3)
+    worksheet.write('F3', "T=S-A", header_format3)
+    worksheet.write('G2', "异常筛查率t", header_format3)
+    worksheet.write('G3', "t=T/S*100", header_format3)
+
+    worksheet.merge_range('H2:H3', "签收C", header_format4)
+    worksheet.write('I2', "签收率c", header_format4)
+    worksheet.write('I3', "c=C/A*100", header_format4)
+    worksheet.write('J2', "未签收R", header_format4)
+    worksheet.write('J3', "R=A-C", header_format4)
+    worksheet.write('K2', "未签收率r", header_format4)
+    worksheet.write('K3', "r=R/A*100%", header_format4)
+
+    worksheet.merge_range('L2:L3', "激活B", header_format5)
+    worksheet.merge_range('M2:M3', col1+"激活量占比", header_format5)
+    worksheet.write('N2', "签收激活率b", header_format5)
+    worksheet.write('N3', "b=B/C*100", header_format5)
+    worksheet.write('O2', "未激活X", header_format5)
+    worksheet.write('O3', "X=C-B", header_format5)
+    worksheet.write('P2', "签收未激活率x", header_format5)
+    worksheet.write('P3', "x=X/C*100%", header_format5)
+
+    worksheet.write('Q2', "发货激活率KPI", header_format2)
+    worksheet.write('Q3', "KPI=B/A*100%", header_format2)
+
+    worksheet.merge_range('R2:R3', "盲投首充D", header_format6)
+    worksheet.merge_range('S2:S3', "盲投"+col1+"首充量占比", header_format6)
+    worksheet.write('T2', "盲投首充率d", header_format6)
+    worksheet.write('T3', "d=D/A*100", header_format6)
+    worksheet.merge_range('U2:U3', "全量首充D", header_format6)
+
+
 
 def insertData1(worksheet, df,data_format,data_format2):
     row1 = 1

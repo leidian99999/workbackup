@@ -220,3 +220,31 @@ data = data.drop(droplist)
 4.df = df[np.isnan(df['just my luck']) == False]
 
 5.df = df[pd.notnull(df['JD_siteName'])]
+
+
+# 复杂点的判断语句（发货，签收，激活）
+def jihuo(x):
+    if x == "交易完成":
+        return 1
+    else:
+        return 0
+
+def qianshou(a,b):
+    if a is not np.nan:
+        return 1
+    elif a is np.nan and b == "交易完成":
+        return 1
+    else:
+        return 0
+
+def fahuo(a,b,c):
+    if a is not np.nan:
+        return 1
+    elif a is np.nan and b == "交易完成":
+        return 1
+    elif a is np.nan and c is not np.nan:
+        return 1
+    else:
+        return 0
+        
+data['签收量'] = data.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis = 1)

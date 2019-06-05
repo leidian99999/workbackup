@@ -248,3 +248,29 @@ def fahuo(a,b,c):
         return 0
         
 data['签收量'] = data.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis = 1)
+
+# 合表
+import pandas as pd
+from os import walk
+for root,dirs,files in walk(r'c:\Users\datas',topdown=False):#这里我们的数据都存储在'c:\Users\datas'文件夹下
+    print(files)#这里我们可以得到所有的文件名称，files是个list
+num = len(files)#改文件夹下所有文件的总数量
+alldata = pd.DataFrame() #建立一个空的dataframe
+for i in range(num):
+    newdata = pd.read_excel(r'c:\Users\datas\%s'%files[i])#读取每个excel文件中的数据
+    alldata = alldata.append(newdata)#将每个excel中的数据存储到之前建好的空的dataframe中
+writer = pd.ExcelWriter(r'C:\Users\output.xlsx')
+alldata.to_excel(writer,'AllData')#这里“AllData”是sheet的名字
+writer.save()#执行完这一步之后，合并后的表格就保存在了C:\Users\output.xls中
+
+# 正则省市名称
+data["dai"] = data["re_formatted_address_gaode"].str.contains("^.*省\w{1,4}市$",regex=True)
+
+# 分列
+split1 = pd.DataFrame((x.split('/') for x in df1['号码归属地']),index=df1.index,columns=['所属省','所属市'])
+df1 = pd.merge(df1, split1, left_index=True, right_index=True)
+
+# 计算各列数据总和并作为新列添加到末尾
+df['Col_sum'] = df.apply(lambda x: x.sum(), axis=1)
+# 计算各行数据总和并作为新行添加到末尾
+df.loc['Row_sum'] = df.apply(lambda x: x.sum())

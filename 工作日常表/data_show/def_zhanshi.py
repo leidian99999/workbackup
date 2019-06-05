@@ -205,3 +205,27 @@ def insertData5(worksheet,df,date_format,data_format2):
         worksheet.write(row1, col1 + 4, D_ZHB, data_format2)
         worksheet.write(row1, col1 + 5, E_ZHB, data_format2)
         row1 += 1
+
+def insertData6(worksheet, df,data_format):
+    row1 = 3
+    col1 = 0
+    for sheng, PD, PDB, PK, PKL, YCH, YCHL, SHM, SHML, WSHM, WSHML, JH, JHB, JHL, SHCH,SHCHB,SHCHL,QSHCH in df.values:
+        worksheet.write(row1, col1 + 0, sheng, data_format)
+        worksheet.write(row1, col1 + 1, PD, data_format)
+        worksheet.write(row1, col1 + 2, PDB, data_format)
+        worksheet.write(row1, col1 + 3, PK, data_format)
+        worksheet.write(row1, col1 + 4, PKL, data_format)
+        worksheet.write(row1, col1 + 5, YCH, data_format)
+        worksheet.write(row1, col1 + 6, YCHL, data_format)
+        worksheet.write(row1, col1 + 7, SHM, data_format)
+        worksheet.write(row1, col1 + 8, SHML, data_format)
+        worksheet.write(row1, col1 + 9, WSHM, data_format)
+        worksheet.write(row1, col1 + 10, WSHML, data_format)
+        worksheet.write(row1, col1 + 11, JH, data_format)
+        worksheet.write(row1, col1 + 12, JHB, data_format)
+        worksheet.write(row1, col1 + 13, JHL, data_format)
+        worksheet.write(row1, col1 + 14, SHCH, data_format)
+        worksheet.write(row1, col1 + 15, SHCHB, data_format)
+        worksheet.write(row1, col1 + 16, SHCHL, data_format)
+        worksheet.write(row1, col1 + 17, QSHCH, data_format)
+        row1 += 1

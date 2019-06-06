@@ -4,6 +4,12 @@ import numpy as np
 from os import walk
 
 
+def laidan(x):
+    if x is np.nan:
+        return 0
+    else:
+        return 1
+
 def fahuo(a,b,c):
     if a is not np.nan:
         return 1
@@ -72,18 +78,17 @@ def five_tables(df1, df2, df3, df4, df5):
     df11['派卡'] = df11["物流单号_y"].apply(paidan)
     df11['上门'] = df11["APP操作时间"].apply(paidan)
     df11['首充'] = df11["订单编号_y"].apply(paidan)
+    df11['来单量'] = df11['订单编号_x'].apply(laidan)
     df11['发货量'] = df11.apply(lambda x: fahuo(x["物流单号_x"], x["订单状态"], x["物流签收时间"]), axis=1)
     df11['签收量'] = df11.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis=1)
     df11['激活量'] = df11["订单状态"].apply(jihuo)
 
-    df = df11[["号码归属地","销售品编号","营业厅送货方式","派单","派卡","上门","首充","发货量","签收量","激活量"]]
+    df = df11[["号码归属地","销售品编号","营业厅送货方式","派单","派卡","上门","首充","发货量","签收量","激活量","来单量"]]
 
     split1 = pd.DataFrame((x.split('/') for x in df['号码归属地']),index=df.index,columns=['所属省','所属市'])
     df = pd.merge(df, split1, left_index=True, right_index=True)
 
     df["销售品编号"] = df["销售品编号"].map(lambda x : str(x))
-
-
 
     return df
     # df11.to_excel(r"F:\temp\190529\数据准备\test3.xlsx", index=False)

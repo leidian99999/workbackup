@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2a24757-cf8a-4ba1-bf29-c72f34c06f74" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled1-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Untitled.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/def_fiveTables.py" beforeDir="false" afterPath="$PROJECT_DIR$/def_fiveTables.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/def_fiveTables2.py" beforeDir="false" afterPath="$PROJECT_DIR$/def_fiveTables2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/def_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/def_zhanshi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_zhanshi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yangshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/yangshi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="421" column="45" lean-forward="true" selection-start-line="421" selection-start-column="45" selection-end-line="421" selection-end-column="45" />
+            <state relative-caret-position="3660">
+              <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -81,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1439" />
     <option name="y" value="69" />
     <option name="width" value="1018" />
@@ -289,12 +280,12 @@
       <workItem from="1559611917048" duration="16719000" />
       <workItem from="1559715435897" duration="19597000" />
       <workItem from="1559785809045" duration="9119000" />
-      <workItem from="1559807230784" duration="4622000" />
+      <workItem from="1559807230784" duration="5646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54689000" />
+    <option name="totallyTimeSpent" value="55713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1608" y="-8" width="1616" height="916" extended-state="6" />
@@ -305,7 +296,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3758213" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3758213" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -402,8 +393,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="421" column="45" lean-forward="true" selection-start-line="421" selection-start-column="45" selection-end-line="421" selection-end-column="45" />
+        <state relative-caret-position="3660">
+          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

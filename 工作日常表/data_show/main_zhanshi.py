@@ -47,7 +47,7 @@ data3 = pd.read_excel(inputPath + "A1_type_active_shengchan.xlsx",
                       skiprows=41,
                       header=None,
                       sheet_name="生产流程分省情况",
-                      nrows=31)
+                      nrows=32)
 
 # 数据集4
 data4 = pd.read_excel(inputPath + "A1_type_active_shengchan.xlsx",

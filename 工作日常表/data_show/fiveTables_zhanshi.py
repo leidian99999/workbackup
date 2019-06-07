@@ -5,20 +5,22 @@ from os import walk
 
 date = '190604'
 
-for root,dirs,files in walk(r"F:\temp\190529\数据准备\7日",topdown=False):
+inputPath = "D:/work/daily/"
+
+for root,dirs,files in walk(inputPath + "7日",topdown=False):
     print(files)
 num = len(files)
 df1 = pd.DataFrame()
 for i in range(num):
-    newdata = pd.read_excel(r'F:\temp\190529\数据准备\7日\%s'%files[i])
+    newdata = pd.read_excel(inputPath + '7日\%s'%files[i])
     df1 = df1.append(newdata) # 189
 
 
 # df1 = pd.read_excel(r"F:\temp\190529\数据准备\3&7日189.xlsx")
-df2 = pd.read_excel(r"F:\temp\190529\数据准备\七日新生产"+ date + ".xlsx") # 新生产表
-df3 = pd.read_excel(r"F:\temp\190529\数据准备\首充.xlsx", sheet_name="Sheet1") # 首充历史表
-df4 = pd.read_excel(r"F:\temp\190529\数据准备\首充0530.xlsx") # 当日历史表
-df5 = pd.read_excel("F:/temp/190529/数据准备/京东" + date +".xlsx") # 京东表
+df2 = pd.read_excel(inputPath + "七日新生产"+ date + ".xlsx") # 新生产表
+df3 = pd.read_excel(inputPath + "首充成功明细.xlsx", sheet_name="Sheet1") # 首充历史表
+df4 = pd.read_excel(inputPath + "首充" + date + ".xlsx") # 当日历史表
+df5 = pd.read_excel(inputPath + "京东" + date +".xlsx") # 京东表
 
 def fahuo(a,b,c):
     if a is not np.nan:
@@ -66,7 +68,7 @@ def five_tables(df1, df2, df3, df4, df5):
     df2 = df2[df2["模式分类"] == "京东模式"]
     df2 = df2[pd.notnull(df2['是否下省'])]
 
-    df34 = pd.concat([df3, df4])
+    df34 = pd.concat([df3, df4],sort=False)
     df34 = df34.drop_duplicates(subset=['用户名'], keep='first')
     df34 = df34[df34["订单编号"].str.contains('订单编号') == False]
     df34['用户名'] = df34['用户名'].map(lambda x: round(x, 0))
@@ -93,7 +95,7 @@ def five_tables(df1, df2, df3, df4, df5):
     df11['激活量'] = df11["订单状态"].apply(jihuo)
 
     # return df11
-    df11.to_excel(r"F:\temp\190529\数据准备\test3.xlsx", index=False)
+    df11.to_excel(inputPath + "test03.xlsx", index=False)
 
 
 five_tables(df1, df2, df3, df4, df5)

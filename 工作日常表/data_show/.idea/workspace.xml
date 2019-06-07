@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2a24757-cf8a-4ba1-bf29-c72f34c06f74" name="Default Changelist" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/data_show.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_show.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fiveTables_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/fiveTables_zhanshi.py" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/main_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_zhanshi.py" afterDir="false" />
+
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +20,11 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/data_show$fiveTables_zhanshi.coverage" NAME="fiveTables_zhanshi Coverage Results" MODIFIED="1559640990141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$zhanshi_test1.coverage" NAME="zhanshi_test1 Coverage Results" MODIFIED="1559612269892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/data_show$main_zhanshi.coverage" NAME="main_zhanshi Coverage Results" MODIFIED="1559638781473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_show$main_zhanshi.coverage" NAME="main_zhanshi Coverage Results" MODIFIED="1559811784857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$zhanshi_test2.coverage" NAME="zhanshi_test2 Coverage Results" MODIFIED="1559613039973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
+
     <splitter split-orientation="horizontal" split-proportion="0.47945204">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -78,6 +83,22 @@
         </leaf>
       </split-second>
     </splitter>
+
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3660">
+              <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -85,6 +106,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>data_JM</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -95,10 +121,12 @@
         <option value="$PROJECT_DIR$/zhanshi_test3 - 副本.py" />
         <option value="$PROJECT_DIR$/zhanshi_test1.py" />
         <option value="$PROJECT_DIR$/zhanshi_test2.py" />
-        <option value="$PROJECT_DIR$/yangshi.py" />
-        <option value="$PROJECT_DIR$/def_zhanshi.py" />
-        <option value="$PROJECT_DIR$/main_zhanshi.py" />
         <option value="$PROJECT_DIR$/fiveTables_zhanshi.py" />
+        <option value="$PROJECT_DIR$/def_fiveTables.py" />
+        <option value="$PROJECT_DIR$/def_fiveTables2.py" />
+        <option value="$PROJECT_DIR$/def_zhanshi.py" />
+        <option value="$PROJECT_DIR$/yangshi.py" />
+        <option value="$PROJECT_DIR$/main_zhanshi.py" />
       </list>
     </option>
   </component>
@@ -113,17 +141,41 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+
     <option name="x" value="192" />
     <option name="y" value="103" />
     <option name="width" value="1152" />
     <option name="height" value="618" />
+
+    <option name="x" value="-1439" />
+    <option name="y" value="69" />
+    <option name="width" value="1018" />
+    <option name="height" value="728" />
+
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
+
     <panes />
+
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="data_show" type="b2602c69:ProjectViewProjectNode" />
+              <item name="data_show" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -143,7 +195,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fiveTables_zhanshi">
+  <component name="RunManager" selected="Python.main_zhanshi">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="data_show" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,7 +231,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fiveTables_zhanshi.py" />
+      <option name="SCRIPT_NAME" value="E:\github\workBackup\工作日常表\data_show\def_fiveTables.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,7 +297,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\github\workBackup\工作日常表\data_show\fiveTables_zhanshi.py" />
+      <option name="SCRIPT_NAME" value="E:\github\workBackup\工作日常表\data_show\def_fiveTables.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,8 +337,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.fiveTables_zhanshi" />
         <item itemvalue="Python.main_zhanshi" />
+        <item itemvalue="Python.fiveTables_zhanshi" />
         <item itemvalue="Python.zhanshi_test2" />
         <item itemvalue="Python.zhanshi_test1" />
         <item itemvalue="Python.zhanshi_test3 - 副本" />
@@ -305,11 +357,14 @@
       <updated>1559401693478</updated>
       <workItem from="1559525171723" duration="4632000" />
       <workItem from="1559611917048" duration="16719000" />
+      <workItem from="1559715435897" duration="19597000" />
+      <workItem from="1559785809045" duration="9119000" />
+      <workItem from="1559807230784" duration="5646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21351000" />
+    <option name="totallyTimeSpent" value="55713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -320,7 +375,11 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+
       <window_info anchor="bottom" id="Run" order="2" weight="0.42407808" />
+
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3758213" />
+
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,7 +403,17 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+
     <entry file="file://D:/Python/envs/jupyterPy36/Lib/site-packages/xlsxwriter/workbook.py" />
+
+    <entry file="file://D:/Python/envs/jupyterPy36/Lib/site-packages/xlsxwriter/workbook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="1539" selection-start-line="1539" selection-end-line="1539" />
+        </state>
+      </provider>
+    </entry>
+
     <entry file="file://$PROJECT_DIR$/zhanshi_test3 - 副本.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2020">
@@ -365,17 +434,56 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/yangshi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="24" />
+
+    <entry file="file://D:/Python/envs/jupyterPy36/Lib/site-packages/xlsxwriter/worksheet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/def_fiveTables2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3420">
+          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/def_fiveTables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangshi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="85" lean-forward="true" selection-start-line="75" selection-end-line="85" />
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/def_zhanshi.py">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="61">
           <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
+
+        <state relative-caret-position="879">
+          <caret line="233" column="43" selection-start-line="233" selection-start-column="43" selection-end-line="233" selection-end-column="43" />
+
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
@@ -383,6 +491,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1265">
           <caret line="343" column="20" selection-start-line="343" selection-start-column="20" selection-end-line="343" selection-end-column="20" />
@@ -396,6 +505,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3660">
+          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

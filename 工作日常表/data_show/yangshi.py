@@ -68,3 +68,36 @@
 #                                       'border': 1,
 #                                       'bold': True,
 #                                       'font_size': 10})
+
+
+'''计算部分'''
+
+# 计算合计（sheet3）
+# worksheet3.write("A34", '合计', SUM_format1)
+# SUM_list = ["B", 'C', 'D', 'E', 'F', 'G', 'I']
+# for w in SUM_list:
+#     worksheet3.write_formula(
+#         w + "34",
+#         '=SUM(' + w + '3:' + w + '33)',
+#         SUM_format1)
+#     # print('=SUM(' + w + '3:' + w + '33)')
+# worksheet3.write_formula("H34", '=G34/B34', SUM_format2)
+# worksheet3.write_formula("J34", '=I34/G34', SUM_format2)
+
+# 计算合计（sheet4）
+# worksheet4.write("A" + str(int(rows1) + 3), '合计', SUM_format1)
+# SUM_list = ["B", 'C', 'D', 'E', 'F', 'G', 'I']
+# for w in SUM_list:
+#     worksheet4.write_formula(w + str(int(rows1) + 3),
+#                              '=SUM(' + w + '3:' + w +
+#                              str(int(rows1) + 2) + ')',
+#                              SUM_format1)
+#     # print('=SUM(' + w + '3:' + w + str(int(rows2) + 2) + ')')
+# worksheet4.write_formula("H" + str(int(rows1) + 3),
+#                          "=G" + str(int(rows1) + 3) + "/" +
+#                          "B" + str(int(rows1) + 3),
+#                          SUM_format2)
+# worksheet4.write_formula("J" + str(int(rows1) + 3),
+#                          "=I" + str(int(rows1) + 3) + "/" +
+#                          "G" + str(int(rows1) + 3),
+#                          SUM_format2)

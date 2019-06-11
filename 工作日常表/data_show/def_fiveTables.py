@@ -50,16 +50,17 @@ def five_tables(df1, df2, df3, df4, df5):
     df1 = df1.drop_duplicates(subset=['订单编号'], keep='first')
     df1 = df1[pd.notnull(df1['号码归属地'])]
     df1 = df1[pd.notnull(df1['入网手机号'])]
-    split1 = pd.DataFrame((x.split(' ') for x in df1['订单生成时间']),index=df1.index,columns=['订单生成日期','订单生成小时'])
-    df1 = pd.merge(df1, split1, left_index=True, right_index=True)
+    # split1 = pd.DataFrame((x.split(' ') for x in df1['订单生成时间']),index=df1.index,columns=['订单生成日期','订单生成小时'])
+    # df1 = pd.merge(df1, split1, left_index=True, right_index=True)
 
     df2 = df2[df2["模式分类"] == "京东模式"]
     df2 = df2[pd.notnull(df2['是否下省'])]
 
     df34 = pd.concat([df3, df4],sort=False)
     df34 = df34.drop_duplicates(subset=['用户名'], keep='first')
-    df34 = df34[df34["订单编号"].str.contains('订单编号') == False]
+    # df34 = df34[df34["订单编号"].str.contains('订单编号') == False]
     df34['用户名'] = df34['用户名'].map(lambda x: round(x, 0))
+
 
     df51 = df5[["运营商单号", "物流单号"]]
     df52 = df5[["运营商单号", "APP操作时间"]]
@@ -72,13 +73,13 @@ def five_tables(df1, df2, df3, df4, df5):
     df11 = pd.merge(df11, df51, left_on="订单编号", right_on="运营商单号", how="left")
     df11 = pd.merge(df11, df52, left_on="订单编号", right_on="运营商单号", how="left")
     df11['入网手机号'] = df11['入网手机号'].apply(int)
-    df11 = pd.merge(df11, df34[['订单编号', '用户名']],left_on="入网手机号", right_on="用户名", how="left")
+    df11 = pd.merge(df11, df34[[ '用户名']],left_on="入网手机号", right_on="用户名", how="left") #'订单编号',
 
     df11['派单'] = df11["是否下省"].apply(paidan)
     df11['派卡'] = df11["物流单号_y"].apply(paidan)
     df11['上门'] = df11["APP操作时间"].apply(paidan)
-    df11['首充'] = df11["订单编号_y"].apply(paidan)
-    df11['来单量'] = df11['订单编号_x'].apply(laidan)
+    df11['首充'] = df11["订单编号"].apply(paidan) #订单编号_y
+    df11['来单量'] = df11['订单编号'].apply(laidan) #订单编号_x
     df11['发货量'] = df11.apply(lambda x: fahuo(x["物流单号_x"], x["订单状态"], x["物流签收时间"]), axis=1)
     df11['签收量'] = df11.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis=1)
     df11['激活量'] = df11["订单状态"].apply(jihuo)
@@ -90,7 +91,7 @@ def five_tables(df1, df2, df3, df4, df5):
 
     df["销售品编号"] = df["销售品编号"].map(lambda x : str(x))
 
-    return df
+    return df,df34
     # df11.to_excel(r"F:\temp\190529\数据准备\test3.xlsx", index=False)
 
 

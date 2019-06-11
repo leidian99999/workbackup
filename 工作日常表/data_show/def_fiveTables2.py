@@ -29,23 +29,23 @@ def M_mode_province(df):
     df_M_province["省份订单量占比"] = df_M_province["来单量"].map(
         lambda x: (2 * x) / (sum(df_M_province["来单量"])+0.00001)
     )
-    df_M_province["发货率"] = df_M_province["发货量"] / df_M_province["来单量"]
+    df_M_province["发货率"] = df_M_province["发货量"] / (df_M_province["来单量"] + 0.00001)
     df_M_province["异常筛查"] = df_M_province["来单量"] - df_M_province["发货量"]
-    df_M_province["异常筛查率"] = df_M_province["异常筛查"] / df_M_province["来单量"]
-    df_M_province["签收率"] = df_M_province["签收量"] / df_M_province["发货量"]
+    df_M_province["异常筛查率"] = df_M_province["异常筛查"] / (df_M_province["来单量"] + 0.00001)
+    df_M_province["签收率"] = df_M_province["签收量"] / (df_M_province["发货量"] + 0.00001)
     df_M_province["未签收量"] = df_M_province["发货量"] - df_M_province["签收量"]   
-    df_M_province["未签收率"] = df_M_province["未签收量"] / df_M_province["发货量"]
+    df_M_province["未签收率"] = df_M_province["未签收量"] / (df_M_province["发货量"] + 0.00001)
     df_M_province["省份激活量占比"] = df_M_province["激活量"].map(
         lambda x: (2 * x) / (sum(df_M_province["激活量"])+ 0.00001)
     )  
-    df_M_province["激活率"] = df_M_province["激活量"] / df_M_province["签收量"]   
+    df_M_province["激活率"] = df_M_province["激活量"] / (df_M_province["签收量"] + 0.00001)
     df_M_province["未激活量"] = df_M_province["签收量"] - df_M_province["激活量"]   
-    df_M_province["未激活率"] = df_M_province["未激活量"] / df_M_province["签收量"]   
-    df_M_province["发货激活率"] = df_M_province["激活量"] / df_M_province["发货量"]  
+    df_M_province["未激活率"] = df_M_province["未激活量"] / (df_M_province["签收量"] + 0.00001)
+    df_M_province["发货激活率"] = df_M_province["激活量"] / (df_M_province["发货量"] + 0.00001)
     df_M_province["省份首充量占比"] = df_M_province["首充"].map(
         lambda x: (2 * x) / (sum(df_M_province["首充"]) + 0.00001)
     )   
-    df_M_province["首充率"] = df_M_province["首充"] / df_M_province["发货量"]   
+    df_M_province["首充率"] = df_M_province["首充"] / (df_M_province["发货量"] + 0.00001)
     df_M_province["全量首充"] = df_SHCH_province   
     df_M_province = df_M_province.reset_index('所属省')  
     df_M_province2 = df_M_province[["所属省","来单量",
@@ -82,23 +82,23 @@ def M_mode_product(df):
     df_M_product["产品订单量占比"] = df_M_product["来单量"].map(
         lambda x: (2 * x) / (sum(df_M_product["来单量"])+0.00001)
     )
-    df_M_product["发货率"] = df_M_product["发货量"] / df_M_product["来单量"]
+    df_M_product["发货率"] = df_M_product["发货量"] / (df_M_product["来单量"] + 0.00001)
     df_M_product["异常筛查"] = df_M_product["来单量"] - df_M_product["发货量"]
-    df_M_product["异常筛查率"] = df_M_product["异常筛查"] / df_M_product["来单量"]
-    df_M_product["签收率"] = df_M_product["签收量"] / df_M_product["发货量"]
+    df_M_product["异常筛查率"] = df_M_product["异常筛查"] / (df_M_product["来单量"] + 0.00001)
+    df_M_product["签收率"] = df_M_product["签收量"] / (df_M_product["发货量"] + 0.00001)
     df_M_product["未签收量"] = df_M_product["发货量"] - df_M_product["签收量"]   
-    df_M_product["未签收率"] = df_M_product["未签收量"] / df_M_product["发货量"]
+    df_M_product["未签收率"] = df_M_product["未签收量"] / (df_M_product["发货量"] + 0.00001)
     df_M_product["产品激活量占比"] = df_M_product["激活量"].map(
         lambda x: (2 * x) / (sum(df_M_product["激活量"])+ 0.00001)
     )  
-    df_M_product["激活率"] = df_M_product["激活量"] / df_M_product["签收量"]   
+    df_M_product["激活率"] = df_M_product["激活量"] / (df_M_product["签收量"] + 0.00001)
     df_M_product["未激活量"] = df_M_product["签收量"] - df_M_product["激活量"]   
-    df_M_product["未激活率"] = df_M_product["未激活量"] / df_M_product["签收量"]   
-    df_M_product["发货激活率"] = df_M_product["激活量"] / df_M_product["发货量"]  
+    df_M_product["未激活率"] = df_M_product["未激活量"] / (df_M_product["签收量"] + 0.00001)
+    df_M_product["发货激活率"] = df_M_product["激活量"] / (df_M_product["发货量"] + 0.00001)
     df_M_product["产品首充量占比"] = df_M_product["首充"].map(
         lambda x: (2 * x) / (sum(df_M_product["首充"]) + 0.00001)
     )   
-    df_M_product["首充率"] = df_M_product["首充"] / df_M_product["发货量"]   
+    df_M_product["首充率"] = df_M_product["首充"] / (df_M_product["发货量"] + 0.00001)
     df_M_product["全量首充"] = df_SHCH_product   
     df_M_product = df_M_product.reset_index('分类')
     df_M_product2 = df_M_product[["分类","来单量",
@@ -136,20 +136,20 @@ def JD_mode_province(df):
     df_JD_province["省份派单量占比"] = df_JD_province["派单"].map(
         lambda x: (2 * x) / (sum(df_JD_province["派单"]) + 0.00001)
     )
-    df_JD_province["派卡率"] = df_JD_province["派卡"] / df_JD_province["派单"]
+    df_JD_province["派卡率"] = df_JD_province["派卡"] / (df_JD_province["派单"] + 0.00001)
     df_JD_province["异常筛查"] = df_JD_province["派单"] - df_JD_province["派卡"]
-    df_JD_province["异常筛查率"] = df_JD_province["异常筛查"] / df_JD_province["派单"]
-    df_JD_province["上门率"] = df_JD_province["上门"] / df_JD_province["派卡"]
+    df_JD_province["异常筛查率"] = df_JD_province["异常筛查"] / (df_JD_province["派单"] + 0.00001)
+    df_JD_province["上门率"] = df_JD_province["上门"] / (df_JD_province["派卡"]+0.00001)
     df_JD_province["未上门"] = df_JD_province["派卡"] - df_JD_province["上门"]
-    df_JD_province["未上门率"] = df_JD_province["未上门"] / df_JD_province["派卡"]
+    df_JD_province["未上门率"] = df_JD_province["未上门"] / (df_JD_province["派卡"]+0.00001)
     df_JD_province["省份激活量占比"] = df_JD_province["激活量"].map(
         lambda x: (2 * x) / (sum(df_JD_province["激活量"])+0.00001)
     )
-    df_JD_province["激活率"] = df_JD_province["激活量"] / df_JD_province["派卡"]
+    df_JD_province["激活率"] = df_JD_province["激活量"] / (df_JD_province["派卡"]+0.00001)
     df_JD_province["省份首充量占比"] = df_JD_province["首充"].map(
         lambda x: (2 * x) / (sum(df_JD_province["首充"])+0.00001)
     )
-    df_JD_province["首充率"] = df_JD_province["首充"] / df_JD_province["派卡"]
+    df_JD_province["首充率"] = df_JD_province["首充"] / (df_JD_province["派卡"]+0.00001)
     df_JD_province["全量首充"] = df_SHCH_province
     df_JD_province = df_JD_province.reset_index('所属省')
     df_JD_province2 = df_JD_province[["所属省","派单",
@@ -187,20 +187,20 @@ def JD_mode_product(df):
     df_JD_product["产品派单量占比"] = df_JD_product["派单"].map(
     lambda x: (2 * x) / (sum(df_JD_product["派单"])+0.00001)
     )
-    df_JD_product["派卡率"] = df_JD_product["派卡"] / df_JD_product["派单"]
+    df_JD_product["派卡率"] = df_JD_product["派卡"] / (df_JD_product["派单"] + 0.00001)
     df_JD_product["异常筛查"] = df_JD_product["派单"] - df_JD_product["派卡"]
-    df_JD_product["异常筛查率"] = df_JD_product["异常筛查"] / df_JD_product["派单"]
-    df_JD_product["上门率"] = df_JD_product["上门"] / df_JD_product["派卡"]
+    df_JD_product["异常筛查率"] = df_JD_product["异常筛查"] / (df_JD_product["派单"] + 0.00001)
+    df_JD_product["上门率"] = df_JD_product["上门"] / (df_JD_product["派卡"] + 0.00001)
     df_JD_product["未上门"] = df_JD_product["派卡"] - df_JD_product["上门"]
-    df_JD_product["未上门率"] = df_JD_product["未上门"] / df_JD_product["派卡"]
+    df_JD_product["未上门率"] = df_JD_product["未上门"] / (df_JD_product["派卡"] + 0.00001)
     df_JD_product["产品激活量占比"] = df_JD_product["激活量"].map(
     lambda x: (2 * x) / (sum(df_JD_product["激活量"])+0.00001)
     )
-    df_JD_product["激活率"] = df_JD_product["激活量"] / df_JD_product["派卡"]
+    df_JD_product["激活率"] = df_JD_product["激活量"] / (df_JD_product["派卡"] + 0.00001)
     df_JD_product["产品首充量占比"] = df_JD_product["首充"].map(
     lambda x: (2 * x) / (sum(df_JD_product["首充"])+0.00001)
     )
-    df_JD_product["首充率"] = df_JD_product["首充"] / df_JD_product["派卡"]
+    df_JD_product["首充率"] = df_JD_product["首充"] / (df_JD_product["派卡"] + 0.00001)
     df_JD_product["全量首充"] = df_SHCH_product
     df_JD_product = df_JD_product.reset_index('分类')
     df_JD_product2 = df_JD_product[["分类","派单",

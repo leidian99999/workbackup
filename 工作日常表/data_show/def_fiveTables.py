@@ -4,11 +4,30 @@ import numpy as np
 from os import walk
 
 
+
+inputPath = "D:/work/daily/"
+
+for root,dirs,files in walk(inputPath + "7日",topdown=False):
+    print(files)
+num = len(files)
+df1 = pd.DataFrame()
+for i in range(num):
+    newdata = pd.read_excel(inputPath + '7日\%s'%files[i])
+    df1 = df1.append(newdata) # 189
+
+
+# df1 = pd.read_excel(r"F:\temp\190529\数据准备\3&7日189.xlsx")
+df2 = pd.read_excel(inputPath + "七日新生产"+ date + ".xlsx") # 新生产表
+df3 = pd.read_excel(inputPath + "首充成功明细.xlsx", sheet_name="Sheet1") # 首充历史表
+df4 = pd.read_excel(inputPath + "首充" + date + ".xlsx") # 当日历史表
+df5 = pd.read_excel(inputPath + "京东" + date +".xlsx") # 京东表
+
 def laidan(x):
     if x is np.nan:
         return 0
     else:
         return 1
+
 
 def fahuo(a,b,c):
     if a is not np.nan:
@@ -84,6 +103,9 @@ def five_tables(df1, df2, df3, df4, df5):
     df11['签收量'] = df11.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis=1)
     df11['激活量'] = df11["订单状态"].apply(jihuo)
 
+
+
+
     df = df11[["号码归属地","销售品编号","营业厅送货方式","派单","派卡","上门","首充","发货量","签收量","激活量","来单量"]]
 
     split1 = pd.DataFrame((x.split('/') for x in df['号码归属地']),index=df.index,columns=['所属省','所属市'])
@@ -93,6 +115,7 @@ def five_tables(df1, df2, df3, df4, df5):
 
     return df,df34
     # df11.to_excel(r"F:\temp\190529\数据准备\test3.xlsx", index=False)
+
 
 
 # five_tables(df1, df2, df3, df4, df5)

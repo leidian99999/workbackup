@@ -4,26 +4,39 @@ from os import walk
 from def_zhanshi import *
 from def_fiveTables import *
 from def_fiveTables2 import *
+from combin2csv import *
 from datetime import datetime,timedelta
 import time
 
 starttime = datetime.now()
-date = '19/06/10'  # 表中日期
+date = '19/06/11'  # 表中日期
 filename = 'testALL.xlsx'  # 输出文件名
-inputPath = "G:/work/daily/DataShow/190610/"  # 输出路径
+inputPath = "G:/work/daily/DataShow/190611/"  # 输出路径
 inputPath2 = "G:/work/daily/DataShow/"
 
 rows1  = 14  # 昨日产品行数
 rows3  = 13  # 3日产品行数
-rows7  = 14  # 7日产品行数
+rows7  = 13  # 7日产品行数
 rows15 = 14  # 15日产品行数
 
-date1 = '190610'  # 文件名日期
-date2 = '2019-06-10'
-date3 = '190609'
+date1 = '190611'  # 文件名日期
+date2 = '2019-06-11'
+date3 = '190610'
 
-san_days = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=3)).strftime('%Y-%m-%d')
-qi_days  = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=7)).strftime('%Y-%m-%d')
+san_days  = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=3)).strftime('%Y-%m-%d')
+qi_days   = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=7)).strftime('%Y-%m-%d')
+erwu_days = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=25)).strftime('%Y-%m-%d')
+print("三日前：" + str(san_days))
+print("七日前：" + str(qi_days))
+print("二十五日前：" + str(erwu_days))
+
+'''合表'''
+# combin_excels(inputPath + "JDpro/",inputPath,"NewPro.csv")
+# combin_excels(inputPath + "SHCHNew/",inputPath,"NewPay"+date1+".csv")
+# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+
+
+
 
 '''读取数据'''
 # 产品标卡
@@ -47,7 +60,7 @@ data5 = pd.read_excel(inputPath + "A1_type_active_shengchan.xlsx",skiprows=4,hea
 data5 = data5.drop([0, 1], axis=1)
 
 # 数据集6
-data6 = pd.read_excel(inputPath2 + "激活展示总表" +date3+ ".xlsx")
+data6 = pd.read_excel(inputPath2 + "激活展示总表" + date3 + ".xlsx")
 # data6 = data6.drop(columns=["总计"])
 data6["日期"] = data6["日期"].dt.strftime('%y/%m/%d')
 data6["日期"] = data6["日期"].map(lambda x : str(x))
@@ -60,7 +73,7 @@ new=pd.DataFrame({'日期':date,
                  index=[1]
                  )
 data6 = data6.append(new,ignore_index=True)
-data6.to_csv(inputPath2+"激活展示总表"+date1+".csv",index=False)
+data6.to_excel(inputPath2+"激活展示总表"+date1+".xlsx",index=False)
 
 # 数据集7
 data7 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_3day.xlsx',skiprows=3,header=None,sheet_name="全流程分省情况",nrows=32)
@@ -69,21 +82,12 @@ data8 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_3day.xlsx',skipro
 
 # 数据集：京东，盲投
 
-# df1 = pd.read_csv(inputPath + "data1.csv")
-df1 = pd.read_excel(inputPath + "data1.xlsx")
-# for root,dirs,files in walk(inputPath + "3日 7日前Ctrl189导出/",topdown=False):
-#     print(files)
-# num = len(files)
-# df1 = pd.DataFrame()
-# for i in range(num):
-#     newdata = pd.read_excel(inputPath + '3日 7日前Ctrl189导出/%s'%files[i])
-#     df1 = df1.append(newdata) # 189
-
+df1 = pd.read_csv(inputPath + "data1.csv")
 split1 = pd.DataFrame((x.split(' ') for x in df1['订单生成时间']),index=df1.index,columns=['订单生成日期','订单生成小时'])
 df1 = pd.merge(df1, split1, left_index=True, right_index=True)
 df1.to_csv(inputPath+"df1.csv",index=False)
 
-df2 = pd.read_excel(inputPath + "3 7日前新生产导出.xlsx")
+df2 = pd.read_csv(inputPath + "NewPro.csv")
 split2 = pd.DataFrame((x.split(' ') for x in df2['订单生成时间']),index=df2.index,columns=['订单生成日期','订单生成小时'])
 df2 = pd.merge(df2, split2, left_index=True, right_index=True)
 
@@ -91,45 +95,29 @@ df5 = pd.read_excel(inputPath + "3 7日京东平台导出.xlsx")
 split5 = pd.DataFrame((x.split(' ') for x in df5['用户下单时间']),index=df5.index,columns=['用户下单日期','用户下单小时'])
 df5 = pd.merge(df5, split5, left_index=True, right_index=True)
 
-df3 = pd.read_excel(inputPath2 + "首充明细"+ date3+".xlsx", sheet_name="Sheet1") # 首充历史表
-df4 = pd.read_excel(inputPath + "首充新增" + date1 + ".xlsx") # 当日历史表
+df3 = pd.read_excel(inputPath2 + "首充明细"+ date3 + ".xlsx", sheet_name="Sheet1") # 首充历史表
+df4 = pd.read_csv(inputPath + "NewPay" + date1 + ".csv") # 当日历史表
 df4 = df4[["用户名"]]
 
 # 数据集：京东，盲投 (3日)
-# for root,dirs,files_3ri in walk(inputPath + "3日",topdown=False):
-#     print(files_3ri)
-# num_3ri = len(files_3ri)
-# df1_3ri = pd.DataFrame()
-# for i in range(num_3ri):
-#     newdata_3ri = pd.read_excel(inputPath + '3日\%s'%files_3ri[i])
-#     df1_3ri = df1_3ri.append(newdata_3ri) # 189
-# df1_3ri.to_excel(inputPath + "df1_3ri.xlsx",index=False)
 
-# df1_3ri = pd.read_excel(inputPath + "df1_3ri.xlsx")
 df1_3ri = df1[df1["订单生成日期"] == san_days]
 df2_3ri = df2[df2["订单生成日期"] == san_days]
 df5_3ri = df5[df5["用户下单日期"] == san_days] # 京东表
 data_JM3 , df34_3ri = five_tables(df1_3ri, df2_3ri, df3, df4, df5_3ri)
 data_JM3 = pd.merge(data_JM3, biaoka, how="left", on="销售品编号")
-
+data_JM3.to_excel(inputPath+"data_JM3.xlsx",index=False)
+exit()
 df34_3ri.to_excel(inputPath2 + "首充明细" + date1 + ".xlsx",index=False)
 
 # 数据集：京东，盲投 (7日)
-# for root,dirs,files_7ri in walk(inputPath + "7日",topdown=False):
-#     print(files_7ri)
-# num_7ri = len(files_7ri)
-# df1_7ri = pd.DataFrame()
-# for i in range(num_7ri):
-#     newdata_7ri = pd.read_excel(inputPath + '7日\%s'%files_7ri[i])
-#     df1_7ri = df1_7ri.append(newdata_7ri) # 189
-# df1_7ri.to_excel(inputPath + "df1_7ri.xlsx",index=False)
 
-# df1_7ri = pd.read_excel(inputPath + "df1_7ri.xlsx")
 df1_7ri = df1[df1["订单生成日期"] == qi_days]
 df2_7ri = df2[df2["订单生成日期"] == qi_days]
 df5_7ri = df5[df5["用户下单日期"] == qi_days] # 京东表
 data_JM7,df34_7ri = five_tables(df1_7ri, df2_7ri, df3, df4, df5_7ri)
 data_JM7 = pd.merge(data_JM7, biaoka, how="left", on="销售品编号")
+# data_JM7.to_excel(inputPath+"data_JM7.xlsx",index=False)
 
 # 数据集11
 data11 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng.xlsx',skiprows=3,header=None,sheet_name="全流程分省情况",nrows=32)
@@ -139,8 +127,22 @@ data12 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng.xlsx',skiprows=3
 data17 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_15day.xlsx',skiprows=3,header=None,sheet_name="全流程分省情况",nrows=32)
 # 数据集18
 data18 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_15day.xlsx',skiprows=3,header=None,sheet_name="全流程产品情况",nrows=rows15)
-
-
+# 数据集19
+data19 = pd.read_excel(inputPath + "A1_type_king_card.xlsx",sheet_name="分省激活情况",skiprows=2,header=0)
+data19 = data19.drop(columns=["Unnamed: 0"], axis=1)
+data19 = data19.fillna(method="ffill")
+data19 = data19[data19["日期"] == erwu_days]
+data19 = data19.append(data19.iloc[0])
+data19 = data19.iloc[1:]
+data19 = data19[["省份","来单量","发货量","签收量","总激活量"]]
+# 数据集20
+data20 = pd.read_excel(inputPath + "A1_type_king_card.xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
+data20 = data20.drop(columns=["Unnamed: 0"], axis=1)
+data20 = data20.fillna(method="ffill")
+data20 = data20[data20["日期"] == erwu_days]
+data20 = data20.append(data20.iloc[0])
+data20 = data20.iloc[1:]
+data20 = data20[["产品","来单量","发货量","签收量","总激活量"]]
 
 '''数据清洗'''
 data3 = cleanquan(data3)
@@ -157,8 +159,8 @@ data15 = JD_mode_province(data_JM7)
 data16 = JD_mode_product(data_JM7)
 data17 = clean271525(data17)
 data18 = clean271525(data18)
-
-
+data19 = twoFive(data19,name="省份")
+data20 = twoFive(data20)
 
 
 
@@ -283,20 +285,20 @@ worksheet4.write_row('A2', headers1, header_format1)
 worksheet5.merge_range('A1:C1', date + "签收时效合计", date_format)
 worksheet5.write_row('A2', headers2, header_format2)
 worksheet6.write_row('A1', headers3, header_format2)
-yangshi371525(worksheet7,'省份','   3日分省',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi371525(worksheet8,'产品','   3日产品',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi37JD  (worksheet9,'省份','   3日京东模式省份数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
-yangshi37JD  (worksheet10,'产品','   3日京东模式产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
-yangshi371525(worksheet11,'省份','   7日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi371525(worksheet12,'产品','   7日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi37Mang  (worksheet13,'省份','   7日盲投省份数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
-yangshi37Mang  (worksheet14,'产品','   7日盲投产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
-yangshi37JD  (worksheet15,'省份','   7日京东模式省份情况',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
-yangshi37JD  (worksheet16,'产品','   7日京东模式产品情况',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
-yangshi371525(worksheet17,'省份','   15日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi371525(worksheet18,'产品','   15日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi371525(worksheet19,'省份','   25日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
-yangshi371525(worksheet20,'产品','   25日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style371525(worksheet7,'省份','   3日分省',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style371525(worksheet8,'产品','   3日产品',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style37JD  (worksheet9,'省份','   3日京东模式省份数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
+style37JD  (worksheet10,'产品','   3日京东模式产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
+style371525(worksheet11,'省份','   7日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style371525(worksheet12,'产品','   7日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style37Mang  (worksheet13,'省份','   7日盲投省份数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
+style37Mang  (worksheet14,'产品','   7日盲投产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
+style37JD  (worksheet15,'省份','   7日京东模式省份情况',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
+style37JD  (worksheet16,'产品','   7日京东模式产品情况',date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6)
+style371525(worksheet17,'省份','   15日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style371525(worksheet18,'产品','   15日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style371525(worksheet19,'省份','   25日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
+style371525(worksheet20,'产品','   25日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
 
 
 # 设定行格式
@@ -378,25 +380,25 @@ for i in range(100):
 
 
 # 写入数据
-insertData1(worksheet1, data1, data_format,data_format2)
-insertData2(worksheet3, data3, data_format)
-insertData2(worksheet4, data4, data_format)
-insertData4(worksheet5,data5,data_format,data_format2)
-insertData5(worksheet6,data6,data_format,data_format2)
-insertData3(worksheet7, data7, data_format)
-insertData3(worksheet8, data8, data_format)
-insertData6(worksheet9, data9, data_format,data_format2)
+insertData1(worksheet1,  data1,  data_format,data_format2)
+insertData2(worksheet3,  data3,  data_format)
+insertData2(worksheet4,  data4,  data_format)
+insertData4(worksheet5,  data5,  data_format,data_format2)
+insertData5(worksheet6,  data6,  data_format,data_format2)
+insertData3(worksheet7,  data7,  data_format,data_format2)
+insertData3(worksheet8,  data8,  data_format,data_format2)
+insertData6(worksheet9,  data9,  data_format,data_format2)
 insertData6(worksheet10, data10, data_format,data_format2)
-insertData3(worksheet11, data11, data_format)
-insertData3(worksheet12, data12, data_format)
+insertData3(worksheet11, data11, data_format,data_format2)
+insertData3(worksheet12, data12, data_format,data_format2)
 insertData7(worksheet13, data13, data_format,data_format2)
 insertData7(worksheet14, data14, data_format,data_format2)
 insertData6(worksheet15, data15, data_format,data_format2)
 insertData6(worksheet16, data16, data_format,data_format2)
-insertData3(worksheet17, data17, data_format)
-insertData3(worksheet18, data18, data_format)
-
-
+insertData3(worksheet17, data17, data_format,data_format2)
+insertData3(worksheet18, data18, data_format,data_format2)
+insertData3(worksheet19, data19, data_format,data_format2)
+insertData3(worksheet20, data20, data_format,data_format2)
 
 
 '''图表部分'''

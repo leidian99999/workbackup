@@ -35,10 +35,13 @@ def combin_excels(inputPath,outputPath,outFileName):
         allData = DataFrame()
         for file in file_name_list:
             allData = allData.append(combine_sheets(inputPath,file))
-        # writer = pd.ExcelWriter(outputPath+outFileName+".csv",engine='openpyxl')
-        # allData.to_csv(excel_writer=writer,sheet_name="ALLDATA",index=False)
-        # writer.save()
+
         allData.to_csv(outputPath + outFileName,index=False)
+        # allData.to_excel(outputPath + outFileName,index=False)
+
+        # writer = pd.ExcelWriter(outputPath+outFileName+".xlsx",engine='openpyxl')
+        # allData.to_excel(excel_writer=writer,sheet_name="ALLDATA",index=False)
+        # writer.save()
 
 # for root,dirs,files in walk(inputPath + "3日 7日前Ctrl189导出/",topdown=False):
 #     print(files)

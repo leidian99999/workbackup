@@ -94,6 +94,27 @@ def get_nday_list(n):
         before_n_days.append(d)
     return before_n_days
 
+# import numpy as np
+a=[1,2,3.4,5]
+print(a)
+[ 1 2 3 4 5 ]
+ 
+print(a[-1]) ###取最后一个元素
+[5]
+ 
+print(a[:-1])  ### 除了最后一个取全部
+[ 1 2 3 4 ]
+ 
+print(a[::-1]) ### 取从后向前（相反）的元素
+[ 5 4 3 2 1 ]
+ 
+print(a[2::-1]) ### 取从下标为2的元素翻转读取
+[ 3 2 1 ]
+
+
+
+
+
 #筛选米粉卡
 print("筛选米粉卡")
 df_MI = df_out[df_out["分类"].isin(['米粉卡','米粉卡日租','米粉卡体验','米粉卡会员'])]

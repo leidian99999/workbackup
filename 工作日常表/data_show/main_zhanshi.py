@@ -9,9 +9,9 @@ from datetime import datetime,timedelta
 import time
 
 starttime = datetime.now()
-date = '19/06/11'  # 表中日期
+date = '19/06/12'  # 表中日期
 filename = 'testALL.xlsx'  # 输出文件名
-inputPath = "G:/work/daily/DataShow/190611/"  # 输出路径
+inputPath = "G:/work/daily/DataShow/190612/"  # 输出路径
 inputPath2 = "G:/work/daily/DataShow/"
 
 rows1  = 14  # 昨日产品行数
@@ -19,9 +19,9 @@ rows3  = 13  # 3日产品行数
 rows7  = 13  # 7日产品行数
 rows15 = 14  # 15日产品行数
 
-date1 = '190611'  # 文件名日期
-date2 = '2019-06-11'
-date3 = '190610'
+date1 = '190612'  # 文件名日期
+date2 = '2019-06-12'
+date3 = '190611'
 
 san_days  = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=3)).strftime('%Y-%m-%d')
 qi_days   = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=7)).strftime('%Y-%m-%d')
@@ -31,9 +31,9 @@ print("七日前：" + str(qi_days))
 print("二十五日前：" + str(erwu_days))
 
 '''合表'''
-# combin_excels(inputPath + "JDpro/",inputPath,"NewPro.csv")
+# combin_excels(inputPath + "JDpro/",inputPath,"NewPro.xlsx")
 # combin_excels(inputPath + "SHCHNew/",inputPath,"NewPay"+date1+".csv")
-# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+# combin_excels(inputPath + "189/",inputPath,"data1"+".xlsx")
 
 
 
@@ -62,7 +62,7 @@ data5 = data5.drop([0, 1], axis=1)
 # 数据集6
 data6 = pd.read_excel(inputPath2 + "激活展示总表" + date3 + ".xlsx")
 # data6 = data6.drop(columns=["总计"])
-data6["日期"] = data6["日期"].dt.strftime('%y/%m/%d')
+# data6["日期"] = data6["日期"].dt.strftime('%y/%m/%d')
 data6["日期"] = data6["日期"].map(lambda x : str(x))
 new=pd.DataFrame({'日期':date,
                   '4日激活占比':data5.iloc[0,2],
@@ -73,7 +73,7 @@ new=pd.DataFrame({'日期':date,
                  index=[1]
                  )
 data6 = data6.append(new,ignore_index=True)
-data6.to_excel(inputPath2+"激活展示总表"+date1+".xlsx",index=False)
+data6.to_excel(inputPath2+"激活展示总表" + date1 + ".xlsx",index=False)
 
 # 数据集7
 data7 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_3day.xlsx',skiprows=3,header=None,sheet_name="全流程分省情况",nrows=32)
@@ -82,16 +82,18 @@ data8 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_3day.xlsx',skipro
 
 # 数据集：京东，盲投
 
-df1 = pd.read_csv(inputPath + "data1.csv")
+# df1 = pd.read_csv(inputPath + "data1.csv")
+df1 = pd.read_excel(inputPath + "data1.xlsx")
 split1 = pd.DataFrame((x.split(' ') for x in df1['订单生成时间']),index=df1.index,columns=['订单生成日期','订单生成小时'])
 df1 = pd.merge(df1, split1, left_index=True, right_index=True)
 df1.to_csv(inputPath+"df1.csv",index=False)
 
-df2 = pd.read_csv(inputPath + "NewPro.csv")
+# df2 = pd.read_csv(inputPath + "NewPro.csv")
+df2 = pd.read_excel(inputPath + "NewPro.xlsx")
 split2 = pd.DataFrame((x.split(' ') for x in df2['订单生成时间']),index=df2.index,columns=['订单生成日期','订单生成小时'])
 df2 = pd.merge(df2, split2, left_index=True, right_index=True)
 
-df5 = pd.read_excel(inputPath + "3 7日京东平台导出.xlsx")
+df5 = pd.read_excel(inputPath + "NewJD.xlsx")
 split5 = pd.DataFrame((x.split(' ') for x in df5['用户下单时间']),index=df5.index,columns=['用户下单日期','用户下单小时'])
 df5 = pd.merge(df5, split5, left_index=True, right_index=True)
 
@@ -106,9 +108,9 @@ df2_3ri = df2[df2["订单生成日期"] == san_days]
 df5_3ri = df5[df5["用户下单日期"] == san_days] # 京东表
 data_JM3 , df34_3ri = five_tables(df1_3ri, df2_3ri, df3, df4, df5_3ri)
 data_JM3 = pd.merge(data_JM3, biaoka, how="left", on="销售品编号")
-data_JM3.to_excel(inputPath+"data_JM3.xlsx",index=False)
-exit()
-df34_3ri.to_excel(inputPath2 + "首充明细" + date1 + ".xlsx",index=False)
+# data_JM3.to_excel(inputPath+"data_JM3.xlsx",index=False)
+
+# df34_3ri.to_excel(inputPath2 + "首充明细" + date1 + ".xlsx",index=False)
 
 # 数据集：京东，盲投 (7日)
 
@@ -277,6 +279,7 @@ SUM_format2 = workbook.add_format({"align": 'center',
 
 
 # 写入标题
+print("开始写入样式")
 worksheet1.merge_range('A1:H1', date + "签收时效合计", date_format)  # 合并单元格
 worksheet3.merge_range('A1:J1', date, date_format)
 worksheet3.write_row('A2', headers1, header_format1)
@@ -380,6 +383,7 @@ for i in range(100):
 
 
 # 写入数据
+print("开始写入数据")
 insertData1(worksheet1,  data1,  data_format,data_format2)
 insertData2(worksheet3,  data3,  data_format)
 insertData2(worksheet4,  data4,  data_format)

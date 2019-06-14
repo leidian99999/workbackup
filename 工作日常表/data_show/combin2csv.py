@@ -7,10 +7,6 @@ import os
 
 
 
-inputName = 'test1.xlsx'  #表格地址+表格名
-inputPath = "G:/work/daily/DataShow\\190611\\test\\"
-outputPath = "G:/work/daily/DataShow/test/"
-outFileName = "大傻逼.csv"
 
 
 def combine_sheets(inputPath,inputName):
@@ -52,4 +48,9 @@ def combin_excels(inputPath,outputPath,outFileName):
 #     df1 = df1.append(newdata) # 189
 
 if __name__=='__main__':
-    combin_excels(inputPath,outputPath,outFileName)
+    # inputName = 'test1.xlsx'  #表格地址+表格名
+    # inputPath = "G:/work/daily/DataShow/190613/"
+    # outputPath = "G:/work/daily/DataShow/test/"
+    # outFileName = "大傻逼.csv"
+    inputPath2 = "G:/work/daily/DataShow/"
+    combin_excels(inputPath2 + "6.8-6.13CHZHInfo/",inputPath2,"CHZHInfo"+".csv")

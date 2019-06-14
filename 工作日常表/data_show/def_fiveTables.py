@@ -2,7 +2,7 @@ import pandas as pd
 import xlsxwriter
 import numpy as np
 from os import walk
-
+from datetime import datetime,timedelta
 
 
 # inputPath = "D:/work/daily/"
@@ -59,6 +59,12 @@ def paidan(x):
     else:
         return 1
 
+def shouchong(x):
+    if x == -1:
+        return 0
+    else:
+        return 1
+
 # 各数据集处理
 
 
@@ -69,14 +75,15 @@ def five_tables(df1, df2, df3, df4, df5):
     df1 = df1.drop_duplicates(subset=['订单编号'], keep='first')
     df1 = df1[pd.notnull(df1['号码归属地'])]
     df1 = df1[pd.notnull(df1['入网手机号'])]
+    df1["入网手机号"] = df1['入网手机号'].astype('int64')
 
     df2 = df2[df2["模式分类"] == "京东模式"]
     df2 = df2[pd.notnull(df2['是否下省'])]
 
     df34 = pd.concat([df3, df4],sort=False)
-    df34 = df34.drop_duplicates(subset=['用户名'], keep='first')
-    df34['用户名'] = df34['用户名'].map(lambda x: round(x, 0))
-
+    df34 = df34.drop_duplicates(subset=['用户名'], keep='first') # 用户名
+    df34 = df34[pd.notnull(df34['用户名'])]
+    df34["用户名"] = df34['用户名'].astype('int64')
 
     df51 = df5[["运营商单号", "物流单号"]]
     df52 = df5[["运营商单号", "APP操作时间"]]
@@ -89,12 +96,16 @@ def five_tables(df1, df2, df3, df4, df5):
     df11 = pd.merge(df11, df51, left_on="订单编号", right_on="运营商单号", how="left")
     df11 = pd.merge(df11, df52, left_on="订单编号", right_on="运营商单号", how="left")
     df11['入网手机号'] = df11['入网手机号'].apply(int)
-    df11 = pd.merge(df11, df34[[ '用户名']],left_on="入网手机号", right_on="用户名", how="left") #'订单编号',
+    df11 = pd.merge(df11, df34[['用户名']],left_on="入网手机号", right_on="用户名", how="left") #'订单编号',
+    # df11 = df11[df11["订单状态"] == "交易完成"]
+    df11["用户名_y"] = df11["用户名_y"].fillna(-1)
+    df11["用户名_y"] = df11['用户名_y'].astype('int64')
+
     # 计算变量
     df11['派单'] = df11["是否下省"].apply(paidan)
     df11['派卡'] = df11["物流单号_y"].apply(paidan)
     df11['上门'] = df11["APP操作时间"].apply(paidan)
-    df11['首充'] = df11["订单编号"].apply(paidan) #订单编号_y
+    df11['首充'] = df11["用户名_y"].apply(shouchong) #订单编号_y
     df11['来单量'] = df11['订单编号'].apply(laidan) #订单编号_x
     df11['发货量'] = df11.apply(lambda x: fahuo(x["物流单号_x"], x["订单状态"], x["物流签收时间"]), axis=1)
     df11['签收量'] = df11.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis=1)
@@ -107,4 +118,14 @@ def five_tables(df1, df2, df3, df4, df5):
 
     df["销售品编号"] = df["销售品编号"].map(lambda x : str(x))
 
-    return df11,df34
+    return df,df34
+
+# 获取前n日日期
+def get_nday_list(date,n):
+    before_n_days = []
+    for i in range(1, n + 1)[::-1]:
+        result_date = datetime.strptime(date, '%Y-%m-%d') - timedelta(days=i)
+        d = result_date.strftime('%Y-%m-%d')
+        before_n_days.append(d)
+    print(before_n_days)
+    return before_n_days

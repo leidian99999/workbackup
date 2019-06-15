@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2a24757-cf8a-4ba1-bf29-c72f34c06f74" name="Default Changelist" comment="">
-
-      <change beforePath="$PROJECT_DIR$/.idea/data_show.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_show.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fiveTables_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/fiveTables_zhanshi.py" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Untitled.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Untitled1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combin2csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/combin2csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/def_fiveTables.py" beforeDir="false" afterPath="$PROJECT_DIR$/def_fiveTables.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_zhanshi.py" afterDir="false" />
-
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,78 +16,45 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/data_show$combin2csv.coverage" NAME="combin2csv Coverage Results" MODIFIED="1560481051243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$fiveTables_zhanshi.coverage" NAME="fiveTables_zhanshi Coverage Results" MODIFIED="1559640990141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$zhanshi_test1.coverage" NAME="zhanshi_test1 Coverage Results" MODIFIED="1559612269892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/data_show$main_zhanshi.coverage" NAME="main_zhanshi Coverage Results" MODIFIED="1559811784857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_show$main_zhanshi.coverage" NAME="main_zhanshi Coverage Results" MODIFIED="1560500520570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$zhanshi_test2.coverage" NAME="zhanshi_test2 Coverage Results" MODIFIED="1559613039973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
-
-    <splitter split-orientation="horizontal" split-proportion="0.47945204">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/def_zhanshi.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="61">
-                  <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
-                  <folding>
-                    <element signature="e#0#17#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1265">
-                  <caret line="343" column="20" selection-start-line="343" selection-start-column="20" selection-end-line="343" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#0#19#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/fiveTables_zhanshi.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#0#19#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4856">
-                  <caret line="343" column="20" selection-start-line="343" selection-start-column="20" selection-end-line="343" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#0#19#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
-
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3660">
-              <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+            <state relative-caret-position="180">
+              <caret line="138" column="7" lean-forward="true" selection-start-line="138" selection-start-column="7" selection-end-line="138" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/def_fiveTables2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -98,7 +63,6 @@
         </entry>
       </file>
     </leaf>
-
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -110,7 +74,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>data_JM</find>
+      <find>用户名</find>
+      <find>主号码</find>
     </findStrings>
+    <replaceStrings>
+      <replace>用户名</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -122,10 +91,12 @@
         <option value="$PROJECT_DIR$/zhanshi_test1.py" />
         <option value="$PROJECT_DIR$/zhanshi_test2.py" />
         <option value="$PROJECT_DIR$/fiveTables_zhanshi.py" />
-        <option value="$PROJECT_DIR$/def_fiveTables.py" />
-        <option value="$PROJECT_DIR$/def_fiveTables2.py" />
-        <option value="$PROJECT_DIR$/def_zhanshi.py" />
         <option value="$PROJECT_DIR$/yangshi.py" />
+        <option value="$PROJECT_DIR$/def_zhanshi.py" />
+        <option value="$PROJECT_DIR$/combin.py" />
+        <option value="$PROJECT_DIR$/def_fiveTables2.py" />
+        <option value="$PROJECT_DIR$/combin2csv.py" />
+        <option value="$PROJECT_DIR$/def_fiveTables.py" />
         <option value="$PROJECT_DIR$/main_zhanshi.py" />
       </list>
     </option>
@@ -141,26 +112,16 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-
-    <option name="x" value="192" />
-    <option name="y" value="103" />
-    <option name="width" value="1152" />
-    <option name="height" value="618" />
-
-    <option name="x" value="-1439" />
-    <option name="y" value="69" />
-    <option name="width" value="1018" />
-    <option name="height" value="728" />
-
+    <option name="x" value="-1608" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-
-    <panes />
-
     <panes>
       <pane id="ProjectPane">
         <subPane>
@@ -175,11 +136,15 @@
       </pane>
       <pane id="Scope" />
     </panes>
-
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -212,6 +177,28 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="combin2csv" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data_show" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/combin2csv.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -306,42 +293,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="zhanshi_test3 - 副本" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="data_show" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/zhanshi_test3 - 副本.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.zhanshi_test1" />
       <item itemvalue="Python.zhanshi_test2" />
-      <item itemvalue="Python.zhanshi_test3 - 副本" />
       <item itemvalue="Python.fiveTables_zhanshi" />
       <item itemvalue="Python.main_zhanshi" />
+      <item itemvalue="Python.combin2csv" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_zhanshi" />
+        <item itemvalue="Python.combin2csv" />
         <item itemvalue="Python.fiveTables_zhanshi" />
         <item itemvalue="Python.zhanshi_test2" />
         <item itemvalue="Python.zhanshi_test1" />
-        <item itemvalue="Python.zhanshi_test3 - 副本" />
       </list>
     </recent_temporary>
   </component>
@@ -360,26 +325,27 @@
       <workItem from="1559715435897" duration="19597000" />
       <workItem from="1559785809045" duration="9119000" />
       <workItem from="1559807230784" duration="5646000" />
+      <workItem from="1560213250489" duration="22086000" />
+      <workItem from="1560306654436" duration="18934000" />
+      <workItem from="1560405774463" duration="2551000" />
+      <workItem from="1560415761956" duration="2872000" />
+      <workItem from="1560474802805" duration="19694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55713000" />
+    <option name="totallyTimeSpent" value="121850000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1608" y="-8" width="1616" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24935234" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16645078" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-
-      <window_info anchor="bottom" id="Run" order="2" weight="0.42407808" />
-
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3758213" />
-
+      <window_info anchor="bottom" x="-30" y="64" width="1600" height="878" id="Run" maximized="true" order="2" type="WINDOWED" weight="0.46911958" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -387,15 +353,15 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32767403" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32720104" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.32966322" />
       <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="4" side_tool="true" weight="0.32966322" />
-      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32966322" />
       <window_info anchor="right" id="SciView" order="6" weight="0.32966322" />
     </layout>
   </component>
@@ -403,9 +369,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-
-    <entry file="file://D:/Python/envs/jupyterPy36/Lib/site-packages/xlsxwriter/workbook.py" />
-
     <entry file="file://D:/Python/envs/jupyterPy36/Lib/site-packages/xlsxwriter/workbook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -413,7 +376,6 @@
         </state>
       </provider>
     </entry>
-
     <entry file="file://$PROJECT_DIR$/zhanshi_test3 - 副本.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2020">
@@ -434,12 +396,6 @@
         </state>
       </provider>
     </entry>
-
-    <entry file="file://$PROJECT_DIR$/yangshi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="24" />
-
     <entry file="file://D:/Python/envs/jupyterPy36/Lib/site-packages/xlsxwriter/worksheet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
@@ -447,10 +403,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/yangshi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="85" lean-forward="true" selection-start-line="75" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/combin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="85" column="2" selection-start-line="85" selection-start-column="2" selection-end-line="85" selection-end-column="26" />
+          <folding>
+            <element signature="e#42#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/combin2csv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="e#15#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Machine-Learning/Data Cleaning &amp; Feature Selection/pandas/pandas设置.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/def_fiveTables2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3420">
-          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+        <state relative-caret-position="283">
+          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -459,31 +445,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/def_fiveTables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="-40">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangshi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="85" lean-forward="true" selection-start-line="75" selection-end-line="85" />
-
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/def_zhanshi.py">
       <provider selected="true" editor-type-id="text-editor">
-
-        <state relative-caret-position="61">
-          <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
-
-        <state relative-caret-position="879">
-          <caret line="233" column="43" selection-start-line="233" selection-start-column="43" selection-end-line="233" selection-end-column="43" />
-
+        <state relative-caret-position="303">
+          <caret line="298" selection-start-line="298" selection-end-line="298" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
@@ -491,25 +464,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
-
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="343" column="20" selection-start-line="343" selection-start-column="20" selection-end-line="343" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fiveTables_zhanshi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
-
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3660">
-          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
-
+        <state relative-caret-position="180">
+          <caret line="138" column="7" lean-forward="true" selection-start-line="138" selection-start-column="7" selection-end-line="138" selection-end-column="7" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

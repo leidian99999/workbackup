@@ -6,6 +6,9 @@ import numpy as np
 import sys
 print(sys.executable)
 
+'''
+数据清洗
+'''
 def clean271525(data):
     data = data.iloc[:, 1:]
     data[4] = data[4].apply(lambda x: format(x, '.2%'))
@@ -24,8 +27,10 @@ def cleanquan(data):
     return data
 
 
-
-def yangshi371525(worksheet,col1, title,date,date_format,header_format2,header_format3,header_format4,header_format5):
+'''
+表标题
+'''
+def style371525(worksheet,col1, title,date,date_format,header_format2,header_format3,header_format4,header_format5):
     worksheet.merge_range('A1:O1', date + title, date_format)
     worksheet.merge_range('A2:A3', col1, header_format2)
     worksheet.merge_range('B2:B3', "订单总数S", header_format2)
@@ -57,7 +62,7 @@ def yangshi371525(worksheet,col1, title,date,date_format,header_format2,header_f
     worksheet.write('O2', "发货激活率KPI", header_format2)
     worksheet.write('O3', "KPI=B/A*100%", header_format2)
 
-def yangshi37JD(worksheet, col1,title,date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6):
+def style37JD(worksheet, col1,title,date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6):
     worksheet.merge_range('A1:R1', date + title, date_format)
     worksheet.merge_range('A2:A3', col1, header_format2)
     worksheet.merge_range('B2:B3', "派单总数S", header_format2)
@@ -90,7 +95,7 @@ def yangshi37JD(worksheet, col1,title,date,date_format,header_format2,header_for
     worksheet.write('Q3', "d=D/A*100", header_format6)
     worksheet.merge_range('R2:R3', "全量首充D", header_format6)
 
-def yangshi37Mang(worksheet, col1,title,date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6):
+def style37Mang(worksheet, col1,title,date,date_format,header_format2,header_format3,header_format4,header_format5,header_format6):
     worksheet.merge_range('A1:R1', date + title, date_format)
     worksheet.merge_range('A2:A3', col1, header_format2)
     worksheet.merge_range('B2:B3', "订单总数S", header_format2)
@@ -131,8 +136,18 @@ def yangshi37Mang(worksheet, col1,title,date,date_format,header_format2,header_f
     worksheet.merge_range('U2:U3', "全量首充D", header_format6)
 
 
-
+'''
+写入数据
+'''
 def insertData1(worksheet, df,data_format,data_format2):
+    '''
+    1、签收时效
+    :param worksheet:
+    :param df:
+    :param data_format:
+    :param data_format2:
+    :return:
+    '''
     row1 = 1
     col1 = 0
     for xieka, sheng, kuaidi, fahuo, sanri, qiri, jihuol, jihuoqianshoul in df.values:
@@ -147,6 +162,13 @@ def insertData1(worksheet, df,data_format,data_format2):
         row1 += 1
 
 def insertData2(worksheet, df,data_format):
+    '''
+    昨日省、产品
+    :param worksheet:
+    :param df:
+    :param data_format:
+    :return:
+    '''
     row1 = 2
     col1 = 0
     for sheng, laidan, lanjie, kadan, v4shang, yichang, fahuo, fahuol, jihuo, jihuob in df.values:
@@ -164,28 +186,43 @@ def insertData2(worksheet, df,data_format):
 
 
 
-def insertData3(worksheet, df,data_format):
+def insertData3(worksheet, df,data_format,data_format2):
+    '''
+    3,7,15，25省产品
+    :param worksheet:
+    :param df:
+    :param data_format:
+    :return:
+    '''
     row1 = 3
     col1 = 0
     for sheng, LD, FH, FHL, YCH, YCHL, QSH, QSHL, WQSH, WQSHL, JH, QSHJHL, WJH, QSHWJHL, FHJHL in df.values:
         worksheet.write(row1, col1 + 0, sheng, data_format)
         worksheet.write(row1, col1 + 1, LD, data_format)
         worksheet.write(row1, col1 + 2, FH, data_format)
-        worksheet.write(row1, col1 + 3, FHL, data_format)
+        worksheet.write(row1, col1 + 3, FHL, data_format2)
         worksheet.write(row1, col1 + 4, YCH, data_format)
-        worksheet.write(row1, col1 + 5, YCHL, data_format)
+        worksheet.write(row1, col1 + 5, YCHL, data_format2)
         worksheet.write(row1, col1 + 6, QSH, data_format)
-        worksheet.write(row1, col1 + 7, QSHL, data_format)
+        worksheet.write(row1, col1 + 7, QSHL, data_format2)
         worksheet.write(row1, col1 + 8, WQSH, data_format)
-        worksheet.write(row1, col1 + 9, WQSHL, data_format)
+        worksheet.write(row1, col1 + 9, WQSHL, data_format2)
         worksheet.write(row1, col1 + 10, JH, data_format)
-        worksheet.write(row1, col1 + 11, QSHJHL, data_format)
+        worksheet.write(row1, col1 + 11, QSHJHL, data_format2)
         worksheet.write(row1, col1 + 12, WJH, data_format)
-        worksheet.write(row1, col1 + 13, QSHWJHL, data_format)
-        worksheet.write(row1, col1 + 14, FHJHL, data_format)
+        worksheet.write(row1, col1 + 13, QSHWJHL, data_format2)
+        worksheet.write(row1, col1 + 14, FHJHL, data_format2)
         row1 += 1
 
 def insertData4(worksheet,df,data_format,data_format2):
+    '''
+    5、激活时效
+    :param worksheet:
+    :param df:
+    :param data_format:
+    :param data_format2:
+    :return:
+    '''
     row1 = 1
     col1 = 0
     for JHSX,JHSL,JHZHB in df.values:
@@ -195,6 +232,14 @@ def insertData4(worksheet,df,data_format,data_format2):
         row1 += 1
 
 def insertData5(worksheet,df,date_format,data_format2):
+    '''
+
+    :param worksheet:
+    :param df:
+    :param date_format:
+    :param data_format2:
+    :return:
+    '''
     row1 = 1
     col1 = 0
     for date,A_ZHB,B_ZHB,C_ZHB,D_ZHB,E_ZHB in df.values:

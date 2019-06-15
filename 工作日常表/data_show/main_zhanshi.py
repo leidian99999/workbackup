@@ -8,16 +8,16 @@ from datetime import datetime
 import time
 
 starttime = datetime.now()
-date = '19/06/04'  # 表中日期
-filename = 'testALL.xlsx'  # 输出文件名
-inputPath = "F:/temp/190605/"  # 输出路径
+date = '19/06/06'  # 表中日期
+filename = 'test190606.xlsx'  # 输出文件名
+inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
 rows1  = 17  # 昨日产品行数
 rows3  = 13  # 3日产品行数
 rows7  = 14  # 7日产品行数
 rows15 = 14  # 15日产品行数
 
-date1 = '190604'  # 文件名日期
+date1 = '190606'  # 文件名日期
 
 
 

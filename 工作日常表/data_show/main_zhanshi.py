@@ -10,26 +10,25 @@ import time
 
 starttime = datetime.now()
 
-date = '19/06/06'  # 表中日期
-filename = 'test190606.xlsx'  # 输出文件名
-inputPath = "D:/work/dataShow/190606/"  # 输出路径
+# date = '19/06/14'  # 表中日期
+# filename = 'test190614.xlsx'  # 输出文件名
+# inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
-date = '19/06/13'  # 表中日期
+date = '19/06/16'  # 表中日期
 filename = 'testALL.xlsx'  # 输出文件名
-inputPath = "G:/work/daily/DataShow/190613/"  # 输出路径
-inputPath2 = "G:/work/daily/DataShow/"
+inputPath = "D:/work/daily/DataShow/190616/"  # 输出路径
+inputPath2 = "D:/work/daily/DataShow/"
 
 
 rows1  = 14  # 昨日产品行数
 rows3  = 13  # 3日产品行数
 rows7  = 13  # 7日产品行数
-rows15 = 14  # 15日产品行数
+rows15 = 13  # 15日产品行数
 
 
-date1 = '190606'  # 文件名日期
-date1 = '190613'  # 文件名日期
-date2 = '2019-06-13'
-date3 = '190612'
+date1 = '190616'  # 文件名日期
+date2 = '2019-06-16'
+date3 = '190615'
 
 san_days  = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=3)).strftime('%Y-%m-%d')
 qi_days   = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=7)).strftime('%Y-%m-%d')
@@ -39,9 +38,10 @@ print("七日前：" + str(qi_days))
 print("二十五日前：" + str(erwu_days))
 
 '''合表'''
-# combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
-# combin_excels(inputPath + "SHCHNew/",inputPath,"NewPay"+date1+".csv")
-# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
+combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
+combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
 
 
 
@@ -102,38 +102,34 @@ df2 = pd.read_csv(inputPath + "NewPro.csv")
 split2 = pd.DataFrame((x.split(' ') for x in df2['订单生成时间']),index=df2.index,columns=['订单生成日期','订单生成小时'])
 df2 = pd.merge(df2, split2, left_index=True, right_index=True)
 
-df5 = pd.read_excel(inputPath + "NewJD.xlsx")
+df3 = pd.read_excel(inputPath2 + "CHZH_Info"+ date3 + ".xlsx") # 首充历史表
+
+df4 = pd.read_csv(inputPath + "NewPay" + date1 + ".csv") # 当日历史表
+split4 = pd.DataFrame((x.split(' ') for x in df4['订单生成时间']), index=df4.index, columns=['订单生成日期', '订单生成小时'])
+df4 = pd.merge(df4, split4, left_index=True, right_index=True)
+
+df5 = pd.read_csv(inputPath + "NewJD.csv")
 split5 = pd.DataFrame((x.split(' ') for x in df5['用户下单时间']),index=df5.index,columns=['用户下单日期','用户下单小时'])
 df5 = pd.merge(df5, split5, left_index=True, right_index=True)
 
-df3 = pd.read_csv(inputPath2 + "CHZH_Info"+ date3 + ".csv") # 首充历史表
-split3 = pd.DataFrame((x.split(' ') for x in df3['订单生成时间']), index=df3.index, columns=['订单生成日期', '订单生成小时'])
-df3 = pd.merge(df3, split3, left_index=True, right_index=True)
-print("当前日期："+ date2)
-ggDays = get_nday_list(date2,7)
-df3 = df3[df3["订单生成日期"].isin(ggDays)]
-df3 = df3[["用户名"]]
-
-df4 = pd.read_csv(inputPath + "NewPay" + date1 + ".csv") # 当日历史表
-df4 = df4[["用户名"]]
 
 # 数据集：京东，盲投 (3日)
 
 df1_3ri = df1[df1["订单生成日期"] == san_days]
 df2_3ri = df2[df2["订单生成日期"] == san_days]
 df5_3ri = df5[df5["用户下单日期"] == san_days] # 京东表
-data_JM3 , df34_3ri = five_tables(df1_3ri, df2_3ri, df3, df4, df5_3ri)
+data_JM3 , df34_3ri = five_tables(df1_3ri, df2_3ri, df3, df4, df5_3ri,date2)
 data_JM3 = pd.merge(data_JM3, biaoka, how="left", on="销售品编号")
 # data_JM3.to_excel(inputPath+"data_JM3.xlsx",index=False)
 
-df34_3ri.to_csv(inputPath2 + "SHCH_Info" + date1 + ".csv",index=False)
+df34_3ri.to_csv(inputPath2 + "CHZH_Info" + date1 + ".csv",index=False)
 
 # 数据集：京东，盲投 (7日)
 
 df1_7ri = df1[df1["订单生成日期"] == qi_days]
 df2_7ri = df2[df2["订单生成日期"] == qi_days]
 df5_7ri = df5[df5["用户下单日期"] == qi_days] # 京东表
-data_JM7,df34_7ri = five_tables(df1_7ri, df2_7ri, df3, df4, df5_7ri)
+data_JM7,df34_7ri = five_tables(df1_7ri, df2_7ri, df3, df4, df5_7ri,date2)
 data_JM7 = pd.merge(data_JM7, biaoka, how="left", on="销售品编号")
 # data_JM7.to_excel(inputPath+"data_JM7.xlsx",index=False)
 

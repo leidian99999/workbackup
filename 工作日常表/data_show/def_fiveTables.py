@@ -67,8 +67,19 @@ def shouchong(x):
 
 # 各数据集处理
 
+# 获取前n日日期
+def get_nday_list(date,n):
+    before_n_days = []
+    for i in range(1, n + 1)[::-1]:
+        result_date = datetime.strptime(date, '%Y-%m-%d') - timedelta(days=i)
+        d = result_date.strftime('%Y-%m-%d')
+        before_n_days.append(d)
+    print(before_n_days)
+    return before_n_days
 
-def five_tables(df1, df2, df3, df4, df5):
+
+
+def five_tables(df1, df2, df3, df4, df5,date2,days=7):
     df1 = df1[(True ^ df1['订单状态'].isin(['办理成功', '办理中', '办理失败']))]
     df1 = df1[pd.notnull(df1['所在省 / 市 / 县'])]
     df1 = df1[df1["订单编号"].str.contains('订单编号') == False]
@@ -81,9 +92,13 @@ def five_tables(df1, df2, df3, df4, df5):
     df2 = df2[pd.notnull(df2['是否下省'])]
 
     df34 = pd.concat([df3, df4],sort=False)
-    df34 = df34.drop_duplicates(subset=['用户名'], keep='first') # 用户名
-    df34 = df34[pd.notnull(df34['用户名'])]
-    df34["用户名"] = df34['用户名'].astype('int64')
+    df34 = df34.drop_duplicates(subset=['主号码'], keep='first') # 主号码
+    df34 = df34[pd.notnull(df34['主号码'])]
+    df34["主号码"] = df34['主号码'].astype('int64')
+    print("当前日期：" + date2)
+    ggDays = get_nday_list(date2, days)
+    df34 = df34[df34["订单生成日期"].isin(ggDays)]
+
 
     df51 = df5[["运营商单号", "物流单号"]]
     df52 = df5[["运营商单号", "APP操作时间"]]
@@ -96,16 +111,16 @@ def five_tables(df1, df2, df3, df4, df5):
     df11 = pd.merge(df11, df51, left_on="订单编号", right_on="运营商单号", how="left")
     df11 = pd.merge(df11, df52, left_on="订单编号", right_on="运营商单号", how="left")
     df11['入网手机号'] = df11['入网手机号'].apply(int)
-    df11 = pd.merge(df11, df34[['用户名']],left_on="入网手机号", right_on="用户名", how="left") #'订单编号',
+    df11 = pd.merge(df11, df34[['主号码']],left_on="入网手机号", right_on="主号码", how="left") #'订单编号',
     # df11 = df11[df11["订单状态"] == "交易完成"]
-    df11["用户名_y"] = df11["用户名_y"].fillna(-1)
-    df11["用户名_y"] = df11['用户名_y'].astype('int64')
+    df11["主号码_y"] = df11["主号码_y"].fillna(-1)
+    df11["主号码_y"] = df11['主号码_y'].astype('int64')
 
     # 计算变量
     df11['派单'] = df11["是否下省"].apply(paidan)
     df11['派卡'] = df11["物流单号_y"].apply(paidan)
     df11['上门'] = df11["APP操作时间"].apply(paidan)
-    df11['首充'] = df11["用户名_y"].apply(shouchong) #订单编号_y
+    df11['首充'] = df11["主号码_y"].apply(shouchong) #订单编号_y
     df11['来单量'] = df11['订单编号'].apply(laidan) #订单编号_x
     df11['发货量'] = df11.apply(lambda x: fahuo(x["物流单号_x"], x["订单状态"], x["物流签收时间"]), axis=1)
     df11['签收量'] = df11.apply(lambda x: qianshou(x["物流签收时间"], x["订单状态"]), axis=1)
@@ -120,12 +135,3 @@ def five_tables(df1, df2, df3, df4, df5):
 
     return df,df34
 
-# 获取前n日日期
-def get_nday_list(date,n):
-    before_n_days = []
-    for i in range(1, n + 1)[::-1]:
-        result_date = datetime.strptime(date, '%Y-%m-%d') - timedelta(days=i)
-        d = result_date.strftime('%Y-%m-%d')
-        before_n_days.append(d)
-    print(before_n_days)
-    return before_n_days

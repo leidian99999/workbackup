@@ -4,9 +4,16 @@ from os import walk
 from def_zhanshi import *
 from def_fiveTables import *
 from def_fiveTables2 import *
+from def_SummarySheets import *
 from combin2csv import *
 from datetime import datetime,timedelta
 import time
+# 忽略无用警告
+import warnings
+warnings.filterwarnings(action="ignore")
+pd.options.display.max_seq_items = 8000
+pd.options.display.max_rows = 8000
+
 
 starttime = datetime.now()
 
@@ -14,10 +21,14 @@ starttime = datetime.now()
 # filename = 'test190614.xlsx'  # 输出文件名
 # inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
+disk = "G"
 date = '19/06/16'  # 表中日期
-filename = 'testALL.xlsx'  # 输出文件名
-inputPath = "D:/work/daily/DataShow/190616/"  # 输出路径
-inputPath2 = "D:/work/daily/DataShow/"
+date1 = '190616'  # 文件名日期
+date2 = '2019-06-16'
+date3 = '190615'
+filename = 'testALL'+ date1+'.xlsx'  # 输出文件名
+inputPath = disk +":/work/daily/DataShow/190616/"  # 输出路径
+inputPath2 = disk + ":/work/daily/DataShow/"
 
 
 rows1  = 14  # 昨日产品行数
@@ -26,9 +37,6 @@ rows7  = 13  # 7日产品行数
 rows15 = 13  # 15日产品行数
 
 
-date1 = '190616'  # 文件名日期
-date2 = '2019-06-16'
-date3 = '190615'
 
 san_days  = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=3)).strftime('%Y-%m-%d')
 qi_days   = (datetime.strptime(date2, '%Y-%m-%d') - timedelta(days=7)).strftime('%Y-%m-%d')
@@ -38,10 +46,10 @@ print("七日前：" + str(qi_days))
 print("二十五日前：" + str(erwu_days))
 
 '''合表'''
-combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
-combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
-combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
-combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
+# combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
+# combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
+# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+# combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
 
 
 
@@ -102,7 +110,7 @@ df2 = pd.read_csv(inputPath + "NewPro.csv")
 split2 = pd.DataFrame((x.split(' ') for x in df2['订单生成时间']),index=df2.index,columns=['订单生成日期','订单生成小时'])
 df2 = pd.merge(df2, split2, left_index=True, right_index=True)
 
-df3 = pd.read_excel(inputPath2 + "CHZH_Info"+ date3 + ".xlsx") # 首充历史表
+df3 = pd.read_csv(inputPath2 + "CHZH_Info"+ date3 + ".csv") # 首充历史表
 
 df4 = pd.read_csv(inputPath + "NewPay" + date1 + ".csv") # 当日历史表
 split4 = pd.DataFrame((x.split(' ') for x in df4['订单生成时间']), index=df4.index, columns=['订单生成日期', '订单生成小时'])
@@ -143,20 +151,35 @@ data17 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_15day.xlsx',skip
 data18 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_15day.xlsx',skiprows=3,header=None,sheet_name="全流程产品情况",nrows=rows15)
 # 数据集19
 data19 = pd.read_excel(inputPath + "A1_type_king_card.xlsx",sheet_name="分省激活情况",skiprows=2,header=0)
-data19 = data19.drop(columns=["Unnamed: 0"], axis=1)
-data19 = data19.fillna(method="ffill")
-data19 = data19[data19["日期"] == erwu_days]
-data19 = data19.append(data19.iloc[0])
-data19 = data19.iloc[1:]
-data19 = data19[["省份","来单量","发货量","签收量","总激活量"]]
+data19 = summary_25days(data19,erwu_days)
+
 # 数据集20
 data20 = pd.read_excel(inputPath + "A1_type_king_card.xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
-data20 = data20.drop(columns=["Unnamed: 0"], axis=1)
-data20 = data20.fillna(method="ffill")
-data20 = data20[data20["日期"] == erwu_days]
-data20 = data20.append(data20.iloc[0])
-data20 = data20.iloc[1:]
-data20 = data20[["产品","来单量","发货量","签收量","总激活量"]]
+data20 = summary_25days(data20,erwu_days,"产品")
+
+
+'''各粉汇总'''
+df_New = pd.read_excel(inputPath + "A1_type_king_card (4).xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
+
+# 数据集21
+df1_JD = pd.read_excel(r"G:\work\daily\DataShow\J_Fan" + date3 + ".xlsx")
+product_JD = "京粉卡"
+data21 = summary_sheets(df1_JD,df_New,product_JD)
+data21.to_excel(inputPath2 + "J_Fan"+date1+".xlsx",index=False)
+
+# 数据集22
+df1_MI = pd.read_excel(r"G:\work\daily\DataShow\M_Fan" + date3 + ".xlsx")
+product_MI = "米粉卡"
+data22 = summary_sheets(df1_MI,df_New,product_MI)
+data22.to_excel(inputPath2 + "M_Fan"+date1+".xlsx",index=False)
+
+# 数据集23
+df1_Baidu = pd.read_excel(r"G:\work\daily\DataShow\B_Fan" + date3 + ".xlsx")
+product_Baidu = "百度圣卡"
+data23 = summary_sheets(df1_Baidu,df_New,product_Baidu)
+data23.to_excel(inputPath2 + "B_Fan"+date1+".xlsx",index=False)
+
+
 
 '''数据清洗'''
 data3 = cleanquan(data3)
@@ -200,11 +223,12 @@ worksheet17 = workbook.add_worksheet("17、15日省份激活率")
 worksheet18 = workbook.add_worksheet("18、15日产品激活率")
 worksheet19 = workbook.add_worksheet("19、25日省份激活率")
 worksheet20 = workbook.add_worksheet("20、25日产品激活率")
-# worksheet21 = workbook.add_worksheet("21、京粉汇总")
-# worksheet22 = workbook.add_worksheet("22、米粉汇总")
-# worksheet23 = workbook.add_worksheet("23、激活总计情况")
-# worksheet24 = workbook.add_worksheet("24、盲投不含转线上")
-# worksheet25 = workbook.add_worksheet("25、京东线下转化率含转线上")
+worksheet21 = workbook.add_worksheet("21、京粉汇总")
+worksheet22 = workbook.add_worksheet("22、米粉汇总")
+worksheet23 = workbook.add_worksheet("23、百度圣卡汇总")
+# worksheet24 = workbook.add_worksheet("24、激活总计情况")
+# worksheet25 = workbook.add_worksheet("25、盲投不含转线上")
+# worksheet26 = workbook.add_worksheet("26、京东线下转化率含转线上")
 
 
 headers1 = ['省份',"来单量",'拦截量','卡单量','v4待上传','异常量','发货量','发货率','激活量','激活比例']
@@ -314,7 +338,9 @@ style371525(worksheet17,'省份','   15日分省数据',date,date_format,header_
 style371525(worksheet18,'产品','   15日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
 style371525(worksheet19,'省份','   25日分省数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
 style371525(worksheet20,'产品','   25日产品数据',date,date_format,header_format2,header_format3,header_format4,header_format5)
-
+styleSummarySheets(worksheet21,header_format2)
+styleSummarySheets(worksheet22,header_format2)
+styleSummarySheets(worksheet23,header_format2)
 
 # 设定行格式
 worksheet1.set_column('A:H', 10)
@@ -387,11 +413,21 @@ for i in range(100):
 
 worksheet19.set_column('A:O', 12)
 for i in range(100):
-    worksheet17.set_row(i, 15)
+    worksheet19.set_row(i, 15)
 
 worksheet20.set_column('A:O', 12)
 for i in range(100):
-    worksheet18.set_row(i, 15)
+    worksheet20.set_row(i, 15)
+
+worksheet21.set_column('A:O', 12)
+for i in range(100):
+    worksheet21.set_row(i, 15)
+worksheet22.set_column('A:O', 12)
+for i in range(100):
+    worksheet22.set_row(i, 15)
+worksheet23.set_column('A:O', 12)
+for i in range(100):
+    worksheet23.set_row(i, 15)
 
 
 # 写入数据
@@ -400,7 +436,7 @@ insertData1(worksheet1,  data1,  data_format,data_format2)
 insertData2(worksheet3,  data3,  data_format)
 insertData2(worksheet4,  data4,  data_format)
 insertData4(worksheet5,  data5,  data_format,data_format2)
-insertData5(worksheet6,  data6,  data_format,data_format2)
+insertData5(worksheet6,  data6,  date_format,data_format2)
 insertData3(worksheet7,  data7,  data_format,data_format2)
 insertData3(worksheet8,  data8,  data_format,data_format2)
 insertData6(worksheet9,  data9,  data_format,data_format2)
@@ -415,6 +451,11 @@ insertData3(worksheet17, data17, data_format,data_format2)
 insertData3(worksheet18, data18, data_format,data_format2)
 insertData3(worksheet19, data19, data_format,data_format2)
 insertData3(worksheet20, data20, data_format,data_format2)
+insertData8(worksheet21, data21, date_format,data_format,data_format2)
+insertData8(worksheet22, data22, date_format,data_format,data_format2)
+insertData8(worksheet23, data23, date_format,data_format,data_format2)
+
+
 
 
 '''图表部分'''

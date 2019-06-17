@@ -136,6 +136,16 @@ def style37Mang(worksheet, col1,title,date,date_format,header_format2,header_for
     worksheet.merge_range('U2:U3', "全量首充D", header_format6)
 
 
+def styleSummarySheets(worksheet,header_format2):
+    worksheet.write('A1', "日期", header_format2)
+    worksheet.write('B1', "来单量", header_format2)
+    worksheet.write('C1', "发货量", header_format2)
+    worksheet.write('D1', "激活量", header_format2)
+    worksheet.write('E1', "3日激活率", header_format2)
+    worksheet.write('F1', "7日激活率", header_format2)
+    worksheet.write('G1', "15日激活率", header_format2)
+
+
 '''
 写入数据
 '''
@@ -316,4 +326,26 @@ def insertData7(worksheet, df,data_format,data_format2):
         worksheet.write(row1, col1 + 18, SHCHB, data_format2)
         worksheet.write(row1, col1 + 19, SHCHL, data_format2)
         worksheet.write(row1, col1 + 20, QSHCH, data_format)
+        row1 += 1
+
+
+def insertData8(worksheet,df,date_format,data_format,data_format2):
+    '''
+    京粉，米粉，百度粉
+    :param worksheet:
+    :param df:
+    :param date_format:
+    :param data_format2:
+    :return:
+    '''
+    row1 = 1
+    col1 = 0
+    for date,LD,FH,JH,JHL_3ri,JHL_7ri,JHL_15ri in df.values:
+        worksheet.write(row1, col1 + 0, date, date_format)
+        worksheet.write(row1, col1 + 1, LD, data_format)
+        worksheet.write(row1, col1 + 2, FH, data_format)
+        worksheet.write(row1, col1 + 3, JH, data_format)
+        worksheet.write(row1, col1 + 4, JHL_3ri, data_format2)
+        worksheet.write(row1, col1 + 5, JHL_7ri, data_format2)
+        worksheet.write(row1, col1 + 6, JHL_15ri, data_format2)
         row1 += 1

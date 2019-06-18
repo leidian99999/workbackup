@@ -22,19 +22,19 @@ starttime = datetime.now()
 # inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
 disk = "G"
-date = '19/06/16'  # 表中日期
-date1 = '190616'  # 文件名日期
-date2 = '2019-06-16'
-date3 = '190615'
+date = '19/06/17'  # 表中日期
+date1 = '190617'  # 文件名日期
+date2 = '2019-06-17'
+date3 = '190616'
 filename = 'testALL'+ date1+'.xlsx'  # 输出文件名
-inputPath = disk +":/work/daily/DataShow/190616/"  # 输出路径
+inputPath = disk +":/work/daily/DataShow/190617/"  # 输出路径
 inputPath2 = disk + ":/work/daily/DataShow/"
 
 
-rows1  = 14  # 昨日产品行数
+rows1  = 13  # 昨日产品行数
 rows3  = 13  # 3日产品行数
 rows7  = 13  # 7日产品行数
-rows15 = 13  # 15日产品行数
+rows15 = 14  # 15日产品行数
 
 
 
@@ -46,13 +46,10 @@ print("七日前：" + str(qi_days))
 print("二十五日前：" + str(erwu_days))
 
 '''合表'''
-# combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
-# combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
-# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
-# combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
-
-
-
+combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
+combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
+combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
 
 
 '''读取数据'''

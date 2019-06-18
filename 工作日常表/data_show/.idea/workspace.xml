@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2a24757-cf8a-4ba1-bf29-c72f34c06f74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/def_SummarySheets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_show.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_show.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Untitled3.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/def_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/def_zhanshi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_zhanshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_zhanshi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +15,7 @@
     <SUITE FILE_PATH="coverage/data_show$combin2csv.coverage" NAME="combin2csv Coverage Results" MODIFIED="1560481051243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$fiveTables_zhanshi.coverage" NAME="fiveTables_zhanshi Coverage Results" MODIFIED="1559640990141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$zhanshi_test1.coverage" NAME="zhanshi_test1 Coverage Results" MODIFIED="1559612269892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/data_show$main_zhanshi.coverage" NAME="main_zhanshi Coverage Results" MODIFIED="1560757177812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_show$main_zhanshi.coverage" NAME="main_zhanshi Coverage Results" MODIFIED="1560823133081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_show$zhanshi_test2.coverage" NAME="zhanshi_test2 Coverage Results" MODIFIED="1559613039973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
@@ -44,8 +39,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="454">
-                  <caret line="455" column="5" lean-forward="true" selection-start-line="455" selection-start-column="5" selection-end-line="455" selection-end-column="5" />
+                <state relative-caret-position="-3288">
+                  <caret line="52" selection-start-line="52" selection-end-line="52" />
                   <folding>
                     <element signature="e#0#19#0" expanded="true" />
                   </folding>
@@ -73,7 +68,7 @@
             <entry file="file://$PROJECT_DIR$/def_zhanshi.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="394">
-                  <caret line="339" column="7" lean-forward="true" selection-start-line="339" selection-start-column="7" selection-end-line="339" selection-end-column="7" />
+                  <caret line="339" column="7" selection-start-line="339" selection-start-column="7" selection-end-line="339" selection-end-column="7" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
@@ -84,7 +79,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/combin2csv.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="320">
+                <state relative-caret-position="240">
                   <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
                   <folding>
                     <element signature="e#15#26#0" expanded="true" />
@@ -96,8 +91,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/def_SummarySheets.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
-                  <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+                <state relative-caret-position="360">
+                  <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
                   <folding>
                     <element signature="e#16#35#0" expanded="true" />
                   </folding>
@@ -149,8 +144,8 @@
         <option value="$PROJECT_DIR$/test1.py" />
         <option value="$PROJECT_DIR$/SummarySheets.py" />
         <option value="$PROJECT_DIR$/def_SummarySheets.py" />
-        <option value="$PROJECT_DIR$/main_zhanshi.py" />
         <option value="$PROJECT_DIR$/def_zhanshi.py" />
+        <option value="$PROJECT_DIR$/main_zhanshi.py" />
       </list>
     </option>
   </component>
@@ -178,17 +173,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="data_show" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data_show" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -388,17 +373,19 @@
       <workItem from="1560734099612" duration="1822000" />
       <workItem from="1560739416831" duration="3952000" />
       <workItem from="1560753014706" duration="4273000" />
+      <workItem from="1560819286461" duration="80000" />
+      <workItem from="1560822874055" duration="1596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131897000" />
+    <option name="totallyTimeSpent" value="133573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1608" y="-8" width="1616" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1658031" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16839378" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -492,7 +479,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/combin2csv.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="240">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
             <element signature="e#15#26#0" expanded="true" />
@@ -502,20 +489,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/def_SummarySheets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        <state relative-caret-position="360">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
           <folding>
             <element signature="e#16#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="455" column="5" lean-forward="true" selection-start-line="455" selection-start-column="5" selection-end-line="455" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -523,9 +500,19 @@
     <entry file="file://$PROJECT_DIR$/def_zhanshi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
-          <caret line="339" column="7" lean-forward="true" selection-start-line="339" selection-start-column="7" selection-end-line="339" selection-end-column="7" />
+          <caret line="339" column="7" selection-start-line="339" selection-start-column="7" selection-end-line="339" selection-end-column="7" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_zhanshi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3288">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

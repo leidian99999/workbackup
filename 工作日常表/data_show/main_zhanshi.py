@@ -22,16 +22,16 @@ starttime = datetime.now()
 # inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
 disk = "G"
-date = '19/06/17'  # 表中日期
-date1 = '190617'  # 文件名日期
-date2 = '2019-06-17'
-date3 = '190616'
+date = '19/06/18'  # 表中日期
+date1 = '190618'  # 文件名日期
+date2 = '2019-06-18'
+date3 = '190617'
 filename = 'testALL'+ date1+'.xlsx'  # 输出文件名
-inputPath = disk +":/work/daily/DataShow/190617/"  # 输出路径
+inputPath = disk +":/work/daily/DataShow/190618/"  # 输出路径
 inputPath2 = disk + ":/work/daily/DataShow/"
 
 
-rows1  = 13  # 昨日产品行数
+rows1  = 12  # 昨日产品行数
 rows3  = 13  # 3日产品行数
 rows7  = 13  # 7日产品行数
 rows15 = 14  # 15日产品行数
@@ -46,10 +46,10 @@ print("七日前：" + str(qi_days))
 print("二十五日前：" + str(erwu_days))
 
 '''合表'''
-combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
-combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
-combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
-combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
+# combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
+# combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
+# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+# combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
 
 
 '''读取数据'''
@@ -125,8 +125,9 @@ df2_3ri = df2[df2["订单生成日期"] == san_days]
 df5_3ri = df5[df5["用户下单日期"] == san_days] # 京东表
 data_JM3 , df34_3ri = five_tables(df1_3ri, df2_3ri, df3, df4, df5_3ri,date2)
 data_JM3 = pd.merge(data_JM3, biaoka, how="left", on="销售品编号")
+data_JM3 = data_JM3[pd.notnull(data_JM3['分类'])]
 # data_JM3.to_excel(inputPath+"data_JM3.xlsx",index=False)
-
+# exit()
 df34_3ri.to_csv(inputPath2 + "CHZH_Info" + date1 + ".csv",index=False)
 
 # 数据集：京东，盲投 (7日)
@@ -136,6 +137,7 @@ df2_7ri = df2[df2["订单生成日期"] == qi_days]
 df5_7ri = df5[df5["用户下单日期"] == qi_days] # 京东表
 data_JM7,df34_7ri = five_tables(df1_7ri, df2_7ri, df3, df4, df5_7ri,date2)
 data_JM7 = pd.merge(data_JM7, biaoka, how="left", on="销售品编号")
+data_JM7 = data_JM7[pd.notnull(data_JM7['分类'])]
 # data_JM7.to_excel(inputPath+"data_JM7.xlsx",index=False)
 
 # 数据集11
@@ -156,7 +158,7 @@ data20 = summary_25days(data20,erwu_days,"产品")
 
 
 '''各粉汇总'''
-df_New = pd.read_excel(inputPath + "A1_type_king_card (4).xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
+df_New = pd.read_excel(inputPath + "A1_type_king_card(4).xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
 
 # 数据集21
 df1_JD = pd.read_excel(r"G:\work\daily\DataShow\J_Fan" + date3 + ".xlsx")

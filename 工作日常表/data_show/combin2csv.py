@@ -35,7 +35,7 @@ def combin_excels(inputPath,outputPath,outFileName):
         allData.to_csv(outputPath + outFileName,index=False)
         # allData.to_excel(outputPath + outFileName,index=False)
 
-        # writer = pd.ExcelWriter(outputPath+outFileName+".xlsx",engine='openpyxl')
+        # writ er = pd.ExcelWriter(outputPath+outFileName+".xlsx",engine='openpyxl')
         # allData.to_excel(excel_writer=writer,sheet_name="ALLDATA",index=False)
         # writer.save()
 

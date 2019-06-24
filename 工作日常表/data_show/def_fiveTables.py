@@ -131,8 +131,8 @@ def five_tables(df1, df2, df3, df4, df5,date2,days=7):
     split1 = pd.DataFrame((x.split('/') for x in df['号码归属地']),index=df.index,columns=['所属省','所属市'])
     df = pd.merge(df, split1, left_index=True, right_index=True)
 
-    df["销售品编号"] = df["销售品编号"].map(lambda x : str(x))
-    df["销售品编号"] = df["销售品编号"].map(lambda x: x[:-2])
+    # df["销售品编号"] = df["销售品编号"].map(lambda x : str(x))
+    # df["销售品编号"] = df["销售品编号"].map(lambda x: x[:-2])
     # df = df.fillna(-999)
     return df,df34
 

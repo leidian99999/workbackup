@@ -21,6 +21,7 @@ starttime = datetime.now()
 # filename = 'test190614.xlsx'  # 输出文件名
 # inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
+
 disk = "G"
 date = '19/06/23'  # 表中日期
 date1 = '190623'  # 文件名日期
@@ -34,6 +35,20 @@ inputPath2 = disk + ":/work/daily/DataShow/"
 rows1  = 13  # 昨日产品行数
 rows3  = 12  # 3日产品行数
 rows7  = 12  # 7日产品行数
+
+disk = "d"
+date = '19/06/21'  # 表中日期
+date1 = '190621'  # 文件名日期
+date2 = '2019-06-21'
+date3 = '190620'
+filename = 'testALL'+ date1+'.xlsx'  # 输出文件名
+inputPath = disk +":/work/daily/DataShow/190621/"  # 输出路径
+inputPath2 = disk + ":/work/daily/DataShow/"
+
+
+rows1  = 12  # 昨日产品行数
+rows3  = 12  # 3日产品行数
+rows7  = 13  # 7日产品行数
 rows15 = 13  # 15日产品行数
 
 
@@ -46,15 +61,17 @@ print("七日前：" + str(qi_days))
 print("二十五日前：" + str(erwu_days))
 
 '''合表'''
-# combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
-# combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
-# combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
-# combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
+combin_excels(inputPath + "NewPro/",inputPath,"NewPro.csv")
+combin_excels(inputPath + "NewPay/",inputPath,"NewPay"+date1+".csv")
+combin_excels(inputPath + "189/",inputPath,"data1"+".csv")
+combin_excels(inputPath + "NewJD/",inputPath,"NewJD.csv")
 
 
 '''读取数据'''
 # 产品标卡
+
 biaoka = pd.read_excel(inputPath2 + "产品标卡.xlsx")
+biaoka = pd.read_excel(inputPath2 + "产品标卡-3.xlsx")
 # biaoka["销售品编号"] = biaoka["销售品编号"].map(lambda x: str(x))
 
 # 数据集1
@@ -162,19 +179,31 @@ data20 = summary_25days(data20,erwu_days,"产品")
 df_New = pd.read_excel(inputPath + "A1_type_king_card(4).xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
 
 # 数据集21
+
 df1_JD = pd.read_excel(r"G:\work\daily\DataShow\J_Fan/J_Fan" + date3 + ".xlsx")
+
+df1_JD = pd.read_excel(inputPath2 + "J_Fan/J_Fan" + date3 + ".xlsx")
+
 product_JD = "京粉卡"
 data21 = summary_sheets(df1_JD,df_New,product_JD)
 data21.to_excel(inputPath2 + "J_Fan/J_Fan"+date1+".xlsx",index=False)
 
 # 数据集22
+
 df1_MI = pd.read_excel(r"G:\work\daily\DataShow\M_Fan/M_Fan" + date3 + ".xlsx")
+
+df1_MI = pd.read_excel(inputPath2 + "M_Fan/M_Fan" + date3 + ".xlsx")
+
 product_MI = "米粉卡"
 data22 = summary_sheets(df1_MI,df_New,product_MI)
 data22.to_excel(inputPath2 + "M_Fan/M_Fan"+date1+".xlsx",index=False)
 
 # 数据集23
+
 df1_Baidu = pd.read_excel(r"G:\work\daily\DataShow\B_Fan/B_Fan" + date3 + ".xlsx")
+
+df1_Baidu = pd.read_excel(inputPath2 + "B_Fan/B_Fan" + date3 + ".xlsx")
+
 product_Baidu = "百度圣卡"
 data23 = summary_sheets(df1_Baidu,df_New,product_Baidu)
 data23.to_excel(inputPath2 + "B_Fan/B_Fan"+date1+".xlsx",index=False)

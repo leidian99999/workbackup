@@ -22,19 +22,19 @@ starttime = datetime.now()
 # inputPath = "D:/work/dataShow/190606/"  # 输出路径
 
 disk = "G"
-date = '19/06/18'  # 表中日期
-date1 = '190618'  # 文件名日期
-date2 = '2019-06-18'
-date3 = '190617'
+date = '19/06/23'  # 表中日期
+date1 = '190623'  # 文件名日期
+date2 = '2019-06-23'
+date3 = '190622'
 filename = 'testALL'+ date1+'.xlsx'  # 输出文件名
-inputPath = disk +":/work/daily/DataShow/190618/"  # 输出路径
+inputPath = disk +":/work/daily/DataShow/190623/"  # 输出路径
 inputPath2 = disk + ":/work/daily/DataShow/"
 
 
-rows1  = 12  # 昨日产品行数
-rows3  = 13  # 3日产品行数
-rows7  = 13  # 7日产品行数
-rows15 = 14  # 15日产品行数
+rows1  = 13  # 昨日产品行数
+rows3  = 12  # 3日产品行数
+rows7  = 12  # 7日产品行数
+rows15 = 13  # 15日产品行数
 
 
 
@@ -55,7 +55,7 @@ print("二十五日前：" + str(erwu_days))
 '''读取数据'''
 # 产品标卡
 biaoka = pd.read_excel(inputPath2 + "产品标卡.xlsx")
-biaoka["销售品编号"] = biaoka["销售品编号"].map(lambda x: str(x))
+# biaoka["销售品编号"] = biaoka["销售品编号"].map(lambda x: str(x))
 
 # 数据集1
 data1 = pd.read_excel(inputPath + "A1_sign_active_1.xlsx",skiprows=3,header=0,sheet_name="8日前签收时效合计",nrows=100)
@@ -74,7 +74,7 @@ data5 = pd.read_excel(inputPath + "A1_type_active_shengchan.xlsx",skiprows=4,hea
 data5 = data5.drop([0, 1], axis=1)
 
 # 数据集6
-data6 = pd.read_excel(inputPath2 + "激活展示总表" + date3 + ".xlsx")
+data6 = pd.read_excel(inputPath2 + "zhanshi/激活展示总表" + date3 + ".xlsx")
 # data6 = data6.drop(columns=["总计"])
 # data6["日期"] = data6["日期"].dt.strftime('%y/%m/%d')
 data6["日期"] = data6["日期"].map(lambda x : str(x))
@@ -87,7 +87,7 @@ new=pd.DataFrame({'日期':date,
                  index=[1]
                  )
 data6 = data6.append(new,ignore_index=True)
-data6.to_excel(inputPath2+"激活展示总表" + date1 + ".xlsx",index=False)
+data6.to_excel(inputPath2+"zhanshi/激活展示总表" + date1 + ".xlsx",index=False)
 
 # 数据集7
 data7 = pd.read_excel(inputPath + 'A1_type_active_quanliucheng_3day.xlsx',skiprows=3,header=None,sheet_name="全流程分省情况",nrows=32)
@@ -107,7 +107,7 @@ df2 = pd.read_csv(inputPath + "NewPro.csv")
 split2 = pd.DataFrame((x.split(' ') for x in df2['订单生成时间']),index=df2.index,columns=['订单生成日期','订单生成小时'])
 df2 = pd.merge(df2, split2, left_index=True, right_index=True)
 
-df3 = pd.read_csv(inputPath2 + "CHZH_Info"+ date3 + ".csv") # 首充历史表
+df3 = pd.read_csv(inputPath2 + "CHZH/CHZH_Info"+ date3 + ".csv") # 首充历史表
 
 df4 = pd.read_csv(inputPath + "NewPay" + date1 + ".csv") # 当日历史表
 split4 = pd.DataFrame((x.split(' ') for x in df4['订单生成时间']), index=df4.index, columns=['订单生成日期', '订单生成小时'])
@@ -127,8 +127,9 @@ data_JM3 , df34_3ri = five_tables(df1_3ri, df2_3ri, df3, df4, df5_3ri,date2)
 data_JM3 = pd.merge(data_JM3, biaoka, how="left", on="销售品编号")
 data_JM3 = data_JM3[pd.notnull(data_JM3['分类'])]
 # data_JM3.to_excel(inputPath+"data_JM3.xlsx",index=False)
+#
 # exit()
-df34_3ri.to_csv(inputPath2 + "CHZH_Info" + date1 + ".csv",index=False)
+df34_3ri.to_csv(inputPath2 + "CHZH/CHZH_Info" + date1 + ".csv",index=False)
 
 # 数据集：京东，盲投 (7日)
 
@@ -161,22 +162,22 @@ data20 = summary_25days(data20,erwu_days,"产品")
 df_New = pd.read_excel(inputPath + "A1_type_king_card(4).xlsx",sheet_name="全部产品激活情况",skiprows=2,header=0)
 
 # 数据集21
-df1_JD = pd.read_excel(r"G:\work\daily\DataShow\J_Fan" + date3 + ".xlsx")
+df1_JD = pd.read_excel(r"G:\work\daily\DataShow\J_Fan/J_Fan" + date3 + ".xlsx")
 product_JD = "京粉卡"
 data21 = summary_sheets(df1_JD,df_New,product_JD)
-data21.to_excel(inputPath2 + "J_Fan"+date1+".xlsx",index=False)
+data21.to_excel(inputPath2 + "J_Fan/J_Fan"+date1+".xlsx",index=False)
 
 # 数据集22
-df1_MI = pd.read_excel(r"G:\work\daily\DataShow\M_Fan" + date3 + ".xlsx")
+df1_MI = pd.read_excel(r"G:\work\daily\DataShow\M_Fan/M_Fan" + date3 + ".xlsx")
 product_MI = "米粉卡"
 data22 = summary_sheets(df1_MI,df_New,product_MI)
-data22.to_excel(inputPath2 + "M_Fan"+date1+".xlsx",index=False)
+data22.to_excel(inputPath2 + "M_Fan/M_Fan"+date1+".xlsx",index=False)
 
 # 数据集23
-df1_Baidu = pd.read_excel(r"G:\work\daily\DataShow\B_Fan" + date3 + ".xlsx")
+df1_Baidu = pd.read_excel(r"G:\work\daily\DataShow\B_Fan/B_Fan" + date3 + ".xlsx")
 product_Baidu = "百度圣卡"
 data23 = summary_sheets(df1_Baidu,df_New,product_Baidu)
-data23.to_excel(inputPath2 + "B_Fan"+date1+".xlsx",index=False)
+data23.to_excel(inputPath2 + "B_Fan/B_Fan"+date1+".xlsx",index=False)
 
 
 
@@ -197,7 +198,9 @@ data17 = clean271525(data17)
 data18 = clean271525(data18)
 data19 = twoFive(data19,name="省份")
 data20 = twoFive(data20)
-
+print(data9.isnull().any())
+# data9.to_excel(inputPath+"data9.xlsx",index=False)
+# exit()
 
 
 # 设置输出sheet

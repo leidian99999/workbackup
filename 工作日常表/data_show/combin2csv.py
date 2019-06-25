@@ -52,5 +52,5 @@ if __name__=='__main__':
     # inputPath = "G:/work/daily/DataShow/190613/"
     # outputPath = "G:/work/daily/DataShow/test/"
     # outFileName = "大傻逼.csv"
-    inputPath2 = "D:/work/daily/DataShow/"
-    combin_excels(inputPath2 + "6.8-6.13CHZH_Info/",inputPath2,"CHZHInfo"+".csv")
+    inputPath2 = r"G:\work\daily\DataShow\190622\新增充值190623/"
+    combin_excels(inputPath2 + "新增充值190624/",inputPath2,"shouchongxinzeng"+".csv")

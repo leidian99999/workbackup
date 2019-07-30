@@ -164,7 +164,8 @@ df5a['silence'] = pd.cut(df5a['激活时效'],bins,labels=["非沉默用户","�
 
 df_new['age']=now_year-df_new["birthday"].dt.year
 bins2 = [0,18,25,35,45,55,200]
-df_new['age_group'] = pd.cut(df_new['age'],bins2,labels=["18岁及以下","19-25岁",'26-35岁','36-45岁','46-55岁','56岁及以上'])
+df_new['age_group'] = pd.cut(df_new['age'],bins2,
+    labels=["18岁及以下","19-25岁",'26-35岁','36-45岁','46-55岁','56岁及以上'])
 
 
 
@@ -295,3 +296,11 @@ df1 = pd.merge(df1, split1, left_index=True, right_index=True)
 df['Col_sum'] = df.apply(lambda x: x.sum(), axis=1)
 # 计算各行数据总和并作为新行添加到末尾
 df.loc['Row_sum'] = df.apply(lambda x: x.sum())
+# list转为dataframe
+df["randomNum"] = pd.DataFrame(list_random_num)
+
+# 生成随机总数
+list_random_num = np.random.randint(0,10000,df.shape[0])
+
+# 查看指定列含空值的行
+df[df["submit_time"].isnull().values==True]

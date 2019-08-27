@@ -304,3 +304,7 @@ list_random_num = np.random.randint(0,10000,df.shape[0])
 
 # 查看指定列含空值的行
 df[df["submit_time"].isnull().values==True]
+
+
+# pandas将dataframe里含有空值的行打印出来
+df[df.isnull().values==True]

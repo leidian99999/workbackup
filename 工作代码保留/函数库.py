@@ -137,7 +137,7 @@ df['订单生成时间'] = df['订单生成时间'].map(lambda x:str(x))
 df2['入网手机号'] = df2['入网手机号'].astype("str")
 # 删除无签收时间
 df["物流签收时间"] = df["物流签收时间"].fillna("无签收时间")
-df = df[~df['物流签收时间'].str.contains('无签收时间')]
+
 # or
 data = data[data[colname].str.contains(colname) == False]
 # or
@@ -291,6 +291,8 @@ data["dai"] = data["re_formatted_address_gaode"].str.contains("^.*省\w{1,4}市$
 # 分列
 split1 = pd.DataFrame((x.split('/') for x in df1['号码归属地']),index=df1.index,columns=['所属省','所属市'])
 df1 = pd.merge(df1, split1, left_index=True, right_index=True)
+
+df['key'].apply(lambda x:x[:4]).tolist()
 
 # 计算各列数据总和并作为新列添加到末尾
 df['Col_sum'] = df.apply(lambda x: x.sum(), axis=1)

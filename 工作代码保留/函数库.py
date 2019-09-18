@@ -79,6 +79,7 @@ def get_sex(str1):
         return '男'
 
 df['性别'] = df["入网身份证号"].str.slice(16,17).map(lambda x:int(x)).apply(get_sex)
+
 # 区分年龄段
 df['生日'] = pd.to_datetime(df['入网身份证号'].str[6:14])
 now_year =datetime.today().year #当前的年份
@@ -310,3 +311,7 @@ df[df["submit_time"].isnull().values==True]
 
 # pandas将dataframe里含有空值的行打印出来
 df[df.isnull().values==True]
+
+##将周一至周日改为1-7数字
+weekDict={'Mon':1,'Tue':2,'Wed':3,'Thu':4,'Fri':5,'Sat':6,'Sun':7}
+data_train["datetime_W"]= data_train["datetime_W"].map(weekDict)
